@@ -137,5 +137,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'linkoye.co'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@linkoye.co'
-EMAIL_HOST_PASSWORD = 'chnadeemc17'
+EMAIL_HOST_PASSWORD = '*******'
 EMAIL_USE_TLS = True
