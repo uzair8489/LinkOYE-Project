@@ -1,0 +1,380 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div style="height: 100vh;" class="main-content">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div style="max-width: 1000px" class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div style="background: #8480802b;" class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-md-4">
+                  <h2 class="mb-0">
+                    <span class="text-nowrap">beskidzka24.pl<i class="fa fa-user-circle text-primary" aria-hidden="true"
+                        data-toggle="tooltip"
+                        data-original-title="For this site, you have chosen to manage everything yourself."></i>
+                    </span>
+                  </h2>
+                  <label id="state-mission" class="badge badge-pill badge-success my-auto"> Completed </label>
+                  </h4>
+                </div>
+                <div class="col-12 col-md-8 my-auto text-right">
+                  <div class="d-flex justify-content-end">
+                    <a href="/en/exchanges/init/193376" class="btn btn-success text-black my-auto" title="Messaging">
+                      <i class="fas fa-comment text-white mr-1"></i>
+                      Contact the advertiser
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card d-none d-md-block">
+            <div class="card-body">
+              <table class="table table-striped table-responsive-sm">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Creation date</th>
+                    <th>Accept/Reject date</th>
+                    <th>Delivery date</th>
+                    <th>Published on</th>
+                    <th>Type</th>
+                    <th class="text-right">Gain</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>193376</td>
+                    <td>8/2/22</td>
+                    <td><span class="badge badge-success">8/3/22</span></td>
+                    <td><span class="delivery-date">8/8/22, 9:24 PM</span></td>
+                    <td><a href="https://beskidzka24.pl" target="_blank">beskidzka24.pl</a></td>
+                    <td class="text-md-nowrap">Advertoria</td>
+                    <td class="text-right">€77.00<br><small>(£65.07)</small></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header-new">
+              <span class="title-primary">
+                Instructions:
+              </span>
+            </div>
+            <div class="card-body">
+              <p>Buongiorno,</p>
+              <p>Ti propongo di pubblicare un nuovo articolo sponsorizzato, da me fornito, sul tuo sito.<br>Devi
+                semplicemente copiarne il contenuto sul tuo sito, senza apportare modificazioni di nessun genere.</p>
+              <p>Grazie,</p>
+              <p>Cordiali saluti.</p>
+              <hr class="my-4">
+              <h5 class="bold text-uppercase mb-3">
+                <i class="flag-icon flag-icon-en mr-1"></i>
+                Here is an automatic translation of this text
+              </h5>
+              <p>
+                Good morning,
+                I propose you to publish a new sponsored article, provided by me, on your site.You simply need to copy
+                its content to your site, without making any changes of any kind.
+                Thank you,
+                Best regards.
+              </p>
+              <div id="ancres_for_editeur" class="mt-5">
+                <span class="h6 d-block mb-3">Links to insert in the article: </span>
+                <div class="p-2 mb-2 rounded border border-secondary">
+                  &lt;a href="https://www.bravokupony.pl/bookingcom-kod-rabatowy.html"&gt;kod promocyjny
+                  Booking&lt;/a&gt;
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-header-new">
+              <span class="title-primary">
+                Content provided by the advertiser
+              </span>
+            </div>
+            <div class="card-body">
+              <article>
+                <div class="row">
+                  <div class="col-7 text-center">
+                    <h4 class="ml-md-5">Main / top image</h4>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-center">
+                  <a href="/uploads/unes/46ab95cb11149cd346543604ff0c1a41.jpg" target="_blank">
+                    <img class="img-thumbnail" style="max-width: 750px; max-height: 550px"
+                      src="https://images.unsplash.com/photo-1660324418777-bc7a50d85c90?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop" alt="">
+                  </a>
+                  <a class="d-none d-sm-inline badge badge-pill badge-success align-self-end"
+                    href="/uploads/unes/46ab95cb11149cd346543604ff0c1a41.jpg" target="_blank" download=""
+                    style="margin-left: -64px; margin-bottom: 14px">
+                    <i class="material-icons p-2">download</i></i>
+                  </a>
+                </div>
+                <div class="my-3">
+                  <div class="alert alert-info ">
+                    You must download the image and host it on your server
+                  </div>
+                  <a href="/uploads/unes/46ab95cb11149cd346543604ff0c1a41.jpg"
+                    class="d-sm-none mt-2 btn btn-block btn-sm btn-outline-dark" download="">
+                    <i class="fa fa-download"></i>Download</a>
+                </div>
+                <hr class="my-4">
+                <div class="my-4">
+                  <h1>Poznaj 5 mało uczęszczanych kierunków podróży w Europie, do których warto się wybrać z rodziną wte
+                    wakacje!</h1>
+                  <section id="article-content" class="my-3 d-block">
+                    <p>Planujesz wakacyjny urlop, ale nie chcesz go tym razem spędzić w zatłoczonych kurortach tocząc w
+                      międzyczasie bitwę o wolne leżaki? Jeśli szukasz pięknych, ale spokojniejszych miejsc niż
+                      najbardziej znane kurorty w Hiszpanii, Włoszech czy w Grecji, to w tym artykule przygotowaliśmy
+                      dla Ciebie alternatywne propozycje.</p>
+                    <p>Jeśli któreś z tych miejsc wpadnie Ci w oko, to podczas rezerwacji noclegów wykorzystaj
+                      koniecznie <a href="https://www.bravokupony.pl/bookingcom-kod-rabatowy.html">kod promocyjny
+                        Booking</a>! Na ich stronie znajdziesz przeróżne oferty noclegowe na każdą kieszeń, możesz
+                      między innymi zarezerwować nocleg w hotelu, hostelu czy w kwaterach prywatnych.&nbsp;</p>
+                    <ol>
+                      <li>Andora&nbsp;</li>
+                    </ol>
+                    <p>Andora to mały kraj, który znajduje się pomiędzy Hiszpanią i Francją. Jeśli marzysz&nbsp; o
+                      spędzeniu wakacji w malowniczych Pirenejach, chodząc po przepięknych szlakach górskich to ten
+                      kierunek zdecydowanie będzie dla Ciebie! Do Andory dostaniemy się najłatwiej samochodem, autobusem
+                      lub też pociągiem z Hiszpanii i Francji. Będąc w Andorze na pewno warto się wybrać na najwyższy
+                      szczyt w kraju czyli Pic Alt de la Coma Pedrosa liczący 2946 m n.p.m. Warto również udać się do
+                      doliny lodowcowej Madriu-Perafita-Claror, położnej w południowo-zachodniej części kraju. Znajduje
+                      się na ona liście światowego dziedzictwa UNESCO. Poza górami możecie również znaleźć w Andorze
+                      interesujące zabytki. Znajduje się tam między innymi 13 świątyń, z czego pierwsze z nich zostały
+                      wybudowane w XIII wieku.</p>
+                    <ol start="2">
+                      <li>Czarnogóra</li>
+                    </ol>
+                    <p>Wybierając się na wakacje na Bałkany jednym z najczęstszych wybieranych kierunków jest Chorwacja.
+                      Jeśli jednak chciałbyś udać się w mniej turystyczne&nbsp; i tańsze miejsce, to pomyśl o
+                      Czarnogórze! Pod względem turystycznej infrastruktury nie jest to kraj jeszcze tak rozwinięty jak
+                      wspomniana Chorwacja, ale również posiada wiele przepięknych miejsc, które warto zobaczyć. Jadąc
+                      do Czarnogóry możesz między innymi połączyć wakacje nad morzem i w górach. Czarnogóra posiada
+                      również wiele parków narodowych jak na przykład Park Narodowy Durmitor czy Park Narodowy Gór
+                      Przeklętych położony wśród majestatycznych szczytów. Jeśli za nastawiasz się bardziej na
+                      zwiedzanie to polecamy Ci udać się do klimatycznego miasta Kotor.&nbsp;</p>
+                    <ol start="3">
+                      <li>Luksemburg</li>
+                    </ol>
+                    <p>Luksemburg jest małym państwem położonym na zachodzie Europy. Jednak pomimo małych rozmiarów,
+                      państwo to ma sporo do zaoferowania! Co więcej, bez problemu porozumiesz się tam w języku
+                      niemiecki, francuskim i angielskim.&nbsp; Znajdziesz tam przepiękne krajobrazy, winne tarasy jak i
+                      malownicze położone zamki. Będzie to idealny kierunek na kilkudniowy wyjazd. Zobaczysz tam
+                      biznesowe dzielnice jak i zabytkowe kamienice i opactwa, wśród których czekają na Ciebie
+                      interesują muzea. Do Luksemburga możecie dotrzeć autem, zajeżdżając przy okazji do innych miejsc
+                      po drodze, jednak jest to trasa dosyć długa, dlatego równie dobrze możecie się zdecydować na
+                      bezpośredni lot z Polski.</p>
+                    <ol start="4">
+                      <li>Islandia</li>
+                    </ol>
+                    <p>Islandia przyciąga wielu pasjonatów natury, jednak w porównaniu z innymi państwami europejskimi,
+                      nie jest to kierunek aż tak często odwiedzany co ma związek z klimatem, położeniem geograficznym
+                      jak i z kosztami. Jednak jeśli chciałbyś zobaczyć niesamowite wodospady, lodowce i wulkany, to
+                      połączenie tych cudów natury znajdziesz właśnie na Islandii. Do Reykjaviku znajdziesz bezpośrednie
+                      loty z Polski, ich cena będzie się różnić w zależności od sezonu, ale na pewno uda Ci się trafić
+                      na przystępną okazję cenową! Islandię najlepiej zwiedzać samochodem, bez problemu dotrzesz wtedy
+                      do przeróżnych miejsc.&nbsp;</p>
+                    <ol start="5">
+                      <li>Liechtenstein</li>
+                    </ol>
+                    <p>Liechtenstein to, podobnie jak Andora i Luksemburg, niewielkie państwo europejskie. Znajduje się
+                      ono pomiędzy Austrią i Szwajcarią. Jeśli szukacie wypadu na parę dni, podczas którego możecie
+                      zwiedzić muzea, zrelaksować się na punktach widokowych czy podjąć bardziej aktywny wypoczynek na
+                      przepięknych szlakach trekkingowych, to Liechtenstein jest właśnie miejscem dla Was! Stolicą tego
+                      państwa jest miasto Vaduz, warto wybrać się tam na jeden czy dwa dni, przejść się po centrum i
+                      zajrzeć do co ciekawszych muzeów. W Vaduz znajduje się również zamek, który co prawda nie jest
+                      dostępny dla zwiedzających, ale warto wybrać się na wzgórze, na którym jest położony, ponieważ
+                      roztacza się z niego piękny widok na góry i miasto. Możecie się również wybrać do malowniczo
+                      położonego średniowiecznego zamku Gutenberg. Niedaleko zamku znajduje się również winnica, w&nbsp;
+                      której możecie spróbować lokalnego wina.&nbsp;</p>
+                  </section>
+                  <section id="article-content-not-raw" class="my-3 d-none">
+                    &lt;p&gt;Planujesz wakacyjny urlop, ale nie chcesz go tym razem spędzić w zatłoczonych kurortach
+                    tocząc w międzyczasie bitwę o wolne leżaki? Jeśli szukasz pięknych, ale spokojniejszych miejsc niż
+                    najbardziej znane kurorty w Hiszpanii, Włoszech czy w Grecji, to w tym artykule przygotowaliśmy dla
+                    Ciebie alternatywne propozycje.&lt;/p&gt;
+                    &lt;p&gt;Jeśli kt&amp;oacute;reś z tych miejsc wpadnie Ci w oko, to podczas rezerwacji
+                    nocleg&amp;oacute;w wykorzystaj koniecznie &lt;a
+                    href="https://www.bravokupony.pl/bookingcom-kod-rabatowy.html"&gt;kod promocyjny Booking&lt;/a&gt;!
+                    Na ich stronie znajdziesz przer&amp;oacute;żne oferty noclegowe na każdą kieszeń, możesz między
+                    innymi zarezerwować nocleg w hotelu, hostelu czy w kwaterach prywatnych.&amp;nbsp;&lt;/p&gt;
+                    &lt;ol&gt;
+                    &lt;li&gt;Andora&amp;nbsp;&lt;/li&gt;
+                    &lt;/ol&gt;
+                    &lt;p&gt;Andora to mały kraj, kt&amp;oacute;ry znajduje się pomiędzy Hiszpanią i Francją. Jeśli
+                    marzysz&amp;nbsp; o spędzeniu wakacji w malowniczych Pirenejach, chodząc po przepięknych szlakach
+                    g&amp;oacute;rskich to ten kierunek zdecydowanie będzie dla Ciebie! Do Andory dostaniemy się
+                    najłatwiej samochodem, autobusem lub też pociągiem z Hiszpanii i Francji. Będąc w Andorze na pewno
+                    warto się wybrać na najwyższy szczyt w kraju czyli Pic Alt de la Coma Pedrosa liczący 2946 m n.p.m.
+                    Warto r&amp;oacute;wnież udać się do doliny lodowcowej Madriu-Perafita-Claror, położnej w
+                    południowo-zachodniej części kraju. Znajduje się na ona liście światowego dziedzictwa UNESCO. Poza
+                    g&amp;oacute;rami możecie r&amp;oacute;wnież znaleźć w Andorze interesujące zabytki. Znajduje się
+                    tam między innymi 13 świątyń, z czego pierwsze z nich zostały wybudowane w XIII wieku.&lt;/p&gt;
+                    &lt;ol start="2"&gt;
+                    &lt;li&gt;Czarnog&amp;oacute;ra&lt;/li&gt;
+                    &lt;/ol&gt;
+                    &lt;p&gt;Wybierając się na wakacje na Bałkany jednym z najczęstszych wybieranych
+                    kierunk&amp;oacute;w jest Chorwacja. Jeśli jednak chciałbyś udać się w mniej turystyczne&amp;nbsp; i
+                    tańsze miejsce, to pomyśl o Czarnog&amp;oacute;rze! Pod względem turystycznej infrastruktury nie
+                    jest to kraj jeszcze tak rozwinięty jak wspomniana Chorwacja, ale r&amp;oacute;wnież posiada wiele
+                    przepięknych miejsc, kt&amp;oacute;re warto zobaczyć. Jadąc do Czarnog&amp;oacute;ry możesz między
+                    innymi połączyć wakacje nad morzem i w g&amp;oacute;rach. Czarnog&amp;oacute;ra posiada
+                    r&amp;oacute;wnież wiele park&amp;oacute;w narodowych jak na przykład Park Narodowy Durmitor czy
+                    Park Narodowy G&amp;oacute;r Przeklętych położony wśr&amp;oacute;d majestatycznych
+                    szczyt&amp;oacute;w. Jeśli za nastawiasz się bardziej na zwiedzanie to polecamy Ci udać się do
+                    klimatycznego miasta Kotor.&amp;nbsp;&lt;/p&gt;
+                    &lt;ol start="3"&gt;
+                    &lt;li&gt;Luksemburg&lt;/li&gt;
+                    &lt;/ol&gt;
+                    &lt;p&gt;Luksemburg jest małym państwem położonym na zachodzie Europy. Jednak pomimo małych
+                    rozmiar&amp;oacute;w, państwo to ma sporo do zaoferowania! Co więcej, bez problemu porozumiesz się
+                    tam w języku niemiecki, francuskim i angielskim.&amp;nbsp; Znajdziesz tam przepiękne krajobrazy,
+                    winne tarasy jak i malownicze położone zamki. Będzie to idealny kierunek na kilkudniowy wyjazd.
+                    Zobaczysz tam biznesowe dzielnice jak i zabytkowe kamienice i opactwa, wśr&amp;oacute;d
+                    kt&amp;oacute;rych czekają na Ciebie interesują muzea. Do Luksemburga możecie dotrzeć autem,
+                    zajeżdżając przy okazji do innych miejsc po drodze, jednak jest to trasa dosyć długa, dlatego
+                    r&amp;oacute;wnie dobrze możecie się zdecydować na bezpośredni lot z Polski.&lt;/p&gt;
+                    &lt;ol start="4"&gt;
+                    &lt;li&gt;Islandia&lt;/li&gt;
+                    &lt;/ol&gt;
+                    &lt;p&gt;Islandia przyciąga wielu pasjonat&amp;oacute;w natury, jednak w por&amp;oacute;wnaniu z
+                    innymi państwami europejskimi, nie jest to kierunek aż tak często odwiedzany co ma związek z
+                    klimatem, położeniem geograficznym jak i z kosztami. Jednak jeśli chciałbyś zobaczyć niesamowite
+                    wodospady, lodowce i wulkany, to połączenie tych cud&amp;oacute;w natury znajdziesz właśnie na
+                    Islandii. Do Reykjaviku znajdziesz bezpośrednie loty z Polski, ich cena będzie się r&amp;oacute;żnić
+                    w zależności od sezonu, ale na pewno uda Ci się trafić na przystępną okazję cenową! Islandię
+                    najlepiej zwiedzać samochodem, bez problemu dotrzesz wtedy do przer&amp;oacute;żnych
+                    miejsc.&amp;nbsp;&lt;/p&gt;
+                    &lt;ol start="5"&gt;
+                    &lt;li&gt;Liechtenstein&lt;/li&gt;
+                    &lt;/ol&gt;
+                    &lt;p&gt;Liechtenstein to, podobnie jak Andora i Luksemburg, niewielkie państwo europejskie.
+                    Znajduje się ono pomiędzy Austrią i Szwajcarią. Jeśli szukacie wypadu na parę dni, podczas
+                    kt&amp;oacute;rego możecie zwiedzić muzea, zrelaksować się na punktach widokowych czy podjąć
+                    bardziej aktywny wypoczynek na przepięknych szlakach trekkingowych, to Liechtenstein jest właśnie
+                    miejscem dla Was! Stolicą tego państwa jest miasto Vaduz, warto wybrać się tam na jeden czy dwa dni,
+                    przejść się po centrum i zajrzeć do co ciekawszych muze&amp;oacute;w. W Vaduz znajduje się
+                    r&amp;oacute;wnież zamek, kt&amp;oacute;ry co prawda nie jest dostępny dla zwiedzających, ale warto
+                    wybrać się na wzg&amp;oacute;rze, na kt&amp;oacute;rym jest położony, ponieważ roztacza się z niego
+                    piękny widok na g&amp;oacute;ry i miasto. Możecie się r&amp;oacute;wnież wybrać do malowniczo
+                    położonego średniowiecznego zamku Gutenberg. Niedaleko zamku znajduje się r&amp;oacute;wnież
+                    winnica, w&amp;nbsp; kt&amp;oacute;rej możecie spr&amp;oacute;bować lokalnego
+                    wina.&amp;nbsp;&lt;/p&gt;
+                  </section>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#code-source").change(function () {
+                      if ($(this).prop("checked") == true) {
+                        $('#article-content').removeClass('d-block');
+                        $('#article-content').addClass('d-none');
+                        $('#article-content-not-raw').removeClass('d-none');
+                        $('#article-content-not-raw').addClass('d-block');
+                      } else {
+                        $('#article-content').removeClass('d-none');
+                        $('#article-content').addClass('d-block');
+                        $('#article-content-not-raw').removeClass('d-block');
+                        $('#article-content-not-raw').addClass('d-none');
+                      }
+                    });
+                  })
+                </script>
+              </article>
+
+              <hr>
+              <p><strong>Anchors</strong></p>
+              &lt;a href="https://www.bravokupony.pl/bookingcom-kod-rabatowy.html"&gt;kod promocyjny
+              Booking&lt;/a&gt;<br>
+              <hr>
+
+              <div class="row">
+
+
+                <div class="col-sm-6">
+                  <a class="mt-4 btn btn-block btn-lg btn-outline-primary text-truncate"
+                    href="/en/common/download-article/193376/text" target="_blank">
+                    Download article in .txt
+                  </a>
+                </div>
+                <div class="col-sm-6">
+                  <a class="mt-4 btn btn-block btn-lg btn-outline-primary text-truncate"
+                    href="/en/common/download-article/193376/pdf" target="_blank">
+                    Download article in .pdf
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header-new">
+              <span class="title-primary">
+                Check link
+              </span>
+            </div>
+            <div class="card-body">
+              <a href="https://beskidzka24.pl/poznaj-5-malo-uczeszczanych-kierunkow-podrozy-w-europie-do-ktorych-warto-sie-wybrac-z-rodzina-w-te-wakacje/"
+                title="Check link" target="_blank" class="btn btn-block btn-outline-primary btn-lg">
+                Check link
+              </a>
+              <div class="mt-2">
+                <div class="mt-3">
+                  <form action="/en/publisher/edit/orderline/193376/publication/url" method="post"
+                    data-hs-cf-bound="true">
+                    <div class="row d-none" id="container-submit-publish-url">
+                      <div class="col-12 col-sm-6">
+                        <button id="submit_edit_publication_url" type="submit" class="btn btn-success w-100">
+                          Valid
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+</div>
+
+{% endblock %}

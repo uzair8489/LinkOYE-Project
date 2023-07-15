@@ -1,0 +1,917 @@
+﻿{% extends 'base-1.html' %}
+{% block title %}Register{% endblock %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+<div class="centered my-5">
+  <div class="container registration">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="registration-title mb-5">Register</h2>
+        {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          {% for message in messages %}
+          {{message}}
+          {% endfor %}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="row flex">
+        <div class="col-md-4">
+          <div class="registraton-step active">
+            <div class="registraton-step_title">
+              <h2>Step 1</h2>
+              <p>General Information</p>
+            </div>
+            <div class="registraton-step_card">
+              <div class="form-group">
+                <label class="control-label required" for="first_name">First Name</label>
+                <input type="text" name="first_name" required minlength="2" maxlength="75"
+                  class="input-lg form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label required" for="last_name">Last Name</label>
+                <input type="text" name="last_name" required minlength="2" maxlength="75"
+                  class="input-lg form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label required" for="username">Username</label>
+                <input type="text" name="username" required minlength="2" maxlength="75"
+                  class="input-lg form-control" />
+              </div>
+              <div class="form-group">
+                <label class="control-label required" for="email">Email</label>
+                <input type="email" name="email" required minlength="3" maxlength="254" class="input-lg form-control" />
+              </div>
+              <fieldset class="password-fieldset">
+                <div class="form-group">
+                  <label class="control-label required" for="password1">Password</label>
+                  <div class="input-group">
+                      <input type="password" name="password1" autocomplete="new-password" pattern="^[^\s]+$" class="form-control" required>
+                  </div>
+              </div>
+              
+                <div class="form-group">
+                  <label class="control-label required" for="password2">Confirm password</label>
+                  <input type="password" name="password2" required autocomplete="new-password" pattern="^[^\s]+$"
+                    class="input-lg form-control" />
+                </div>
+                <div class="input-group-append">
+                  <span style="color: white;">
+                    <input type="checkbox" id="toggle-password">&nbsp; Show Password
+                  </span>
+              </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="registraton-step">
+            <div class="registraton-step_title">
+              <h2>Step 2</h2>
+              <p>Address</p>
+            </div>
+            <div class="registraton-step_card">
+              <fieldset>
+                <div class="form-group">
+                  <label class="control-label required" for="country">Country</label>
+                  <select name="country" required="required" class="input-lg user_country form-control">
+                    <option value="" selected="selected">Country</option>
+                    <option value="AF" data-european-country="0">
+                      Afghanistan
+                    </option>
+                    <option value="AX" data-european-country="0">
+                      Åland Islands
+                    </option>
+                    <option value="AL" data-european-country="0">
+                      Albania
+                    </option>
+                    <option value="DZ" data-european-country="0">
+                      Algeria
+                    </option>
+                    <option value="AS" data-european-country="0">
+                      American Samoa
+                    </option>
+                    <option value="AD" data-european-country="0">
+                      Andorra
+                    </option>
+                    <option value="AO" data-european-country="0">
+                      Angola
+                    </option>
+                    <option value="AI" data-european-country="0">
+                      Anguilla
+                    </option>
+                    <option value="AQ" data-european-country="0">
+                      Antarctica
+                    </option>
+                    <option value="AG" data-european-country="0">
+                      Antigua &amp; Barbuda
+                    </option>
+                    <option value="AR" data-european-country="0">
+                      Argentina
+                    </option>
+                    <option value="AM" data-european-country="0">
+                      Armenia
+                    </option>
+                    <option value="AW" data-european-country="0">
+                      Aruba
+                    </option>
+                    <option value="AU" data-european-country="0">
+                      Australia
+                    </option>
+                    <option value="AT" data-european-country="1">
+                      Austria
+                    </option>
+                    <option value="AZ" data-european-country="0">
+                      Azerbaijan
+                    </option>
+                    <option value="BS" data-european-country="0">
+                      Bahamas
+                    </option>
+                    <option value="BH" data-european-country="0">
+                      Bahrain
+                    </option>
+                    <option value="BD" data-european-country="0">
+                      Bangladesh
+                    </option>
+                    <option value="BB" data-european-country="0">
+                      Barbados
+                    </option>
+                    <option value="BY" data-european-country="0">
+                      Belarus
+                    </option>
+                    <option value="BE" data-european-country="1">
+                      Belgium
+                    </option>
+                    <option value="BZ" data-european-country="0">
+                      Belize
+                    </option>
+                    <option value="BJ" data-european-country="0">
+                      Benin
+                    </option>
+                    <option value="BM" data-european-country="0">
+                      Bermuda
+                    </option>
+                    <option value="BT" data-european-country="0">
+                      Bhutan
+                    </option>
+                    <option value="BO" data-european-country="0">
+                      Bolivia
+                    </option>
+                    <option value="BA" data-european-country="0">
+                      Bosnia &amp; Herzegovina
+                    </option>
+                    <option value="BW" data-european-country="0">
+                      Botswana
+                    </option>
+                    <option value="BV" data-european-country="0">
+                      Bouvet Island
+                    </option>
+                    <option value="BR" data-european-country="0">
+                      Brazil
+                    </option>
+                    <option value="IO" data-european-country="0">
+                      British Indian Ocean Territory
+                    </option>
+                    <option value="VG" data-european-country="0">
+                      British Virgin Islands
+                    </option>
+                    <option value="BN" data-european-country="0">
+                      Brunei
+                    </option>
+                    <option value="BG" data-european-country="1">
+                      Bulgaria
+                    </option>
+                    <option value="BF" data-european-country="0">
+                      Burkina Faso
+                    </option>
+                    <option value="BI" data-european-country="0">
+                      Burundi
+                    </option>
+                    <option value="KH" data-european-country="0">
+                      Cambodia
+                    </option>
+                    <option value="CM" data-european-country="0">
+                      Cameroon
+                    </option>
+                    <option value="CA" data-european-country="0">
+                      Canada
+                    </option>
+                    <option value="CV" data-european-country="0">
+                      Cape Verde
+                    </option>
+                    <option value="BQ" data-european-country="0">
+                      Caribbean Netherlands
+                    </option>
+                    <option value="KY" data-european-country="0">
+                      Cayman Islands
+                    </option>
+                    <option value="CF" data-european-country="0">
+                      Central African Republic
+                    </option>
+                    <option value="TD" data-european-country="0">
+                      Chad
+                    </option>
+                    <option value="CL" data-european-country="0">
+                      Chile
+                    </option>
+                    <option value="CN" data-european-country="0">
+                      China
+                    </option>
+                    <option value="CX" data-european-country="0">
+                      Christmas Island
+                    </option>
+                    <option value="CC" data-european-country="0">
+                      Cocos (Keeling) Islands
+                    </option>
+                    <option value="CO" data-european-country="0">
+                      Colombia
+                    </option>
+                    <option value="KM" data-european-country="0">
+                      Comoros
+                    </option>
+                    <option value="CG" data-european-country="0">
+                      Congo - Brazzaville
+                    </option>
+                    <option value="CD" data-european-country="0">
+                      Congo - Kinshasa
+                    </option>
+                    <option value="CK" data-european-country="0">
+                      Cook Islands
+                    </option>
+                    <option value="CR" data-european-country="0">
+                      Costa Rica
+                    </option>
+                    <option value="CI" data-european-country="0">
+                      Côte d’Ivoire
+                    </option>
+                    <option value="HR" data-european-country="1">
+                      Croatia
+                    </option>
+                    <option value="CU" data-european-country="0">
+                      Cuba
+                    </option>
+                    <option value="CW" data-european-country="0">
+                      Curaçao
+                    </option>
+                    <option value="CY" data-european-country="1">
+                      Cyprus
+                    </option>
+                    <option value="CZ" data-european-country="1">
+                      Czechia
+                    </option>
+                    <option value="DK" data-european-country="1">
+                      Denmark
+                    </option>
+                    <option value="DJ" data-european-country="0">
+                      Djibouti
+                    </option>
+                    <option value="DM" data-european-country="0">
+                      Dominica
+                    </option>
+                    <option value="DO" data-european-country="0">
+                      Dominican Republic
+                    </option>
+                    <option value="EC" data-european-country="0">
+                      Ecuador
+                    </option>
+                    <option value="EG" data-european-country="0">
+                      Egypt
+                    </option>
+                    <option value="SV" data-european-country="0">
+                      El Salvador
+                    </option>
+                    <option value="GQ" data-european-country="0">
+                      Equatorial Guinea
+                    </option>
+                    <option value="ER" data-european-country="0">
+                      Eritrea
+                    </option>
+                    <option value="EE" data-european-country="1">
+                      Estonia
+                    </option>
+                    <option value="SZ" data-european-country="0">
+                      Eswatini
+                    </option>
+                    <option value="ET" data-european-country="0">
+                      Ethiopia
+                    </option>
+                    <option value="FK" data-european-country="0">
+                      Falkland Islands
+                    </option>
+                    <option value="FO" data-european-country="0">
+                      Faroe Islands
+                    </option>
+                    <option value="FJ" data-european-country="0">
+                      Fiji
+                    </option>
+                    <option value="FI" data-european-country="1">
+                      Finland
+                    </option>
+                    <option value="FR" data-european-country="0">
+                      France
+                    </option>
+                    <option value="GF" data-european-country="0">
+                      French Guiana
+                    </option>
+                    <option value="PF" data-european-country="0">
+                      French Polynesia
+                    </option>
+                    <option value="TF" data-european-country="0">
+                      French Southern Territories
+                    </option>
+                    <option value="GA" data-european-country="0">
+                      Gabon
+                    </option>
+                    <option value="GM" data-european-country="0">
+                      Gambia
+                    </option>
+                    <option value="GE" data-european-country="0">
+                      Georgia
+                    </option>
+                    <option value="DE" data-european-country="1">
+                      Germany
+                    </option>
+                    <option value="GH" data-european-country="0">
+                      Ghana
+                    </option>
+                    <option value="GI" data-european-country="0">
+                      Gibraltar
+                    </option>
+                    <option value="GR" data-european-country="1">
+                      Greece
+                    </option>
+                    <option value="GL" data-european-country="0">
+                      Greenland
+                    </option>
+                    <option value="GD" data-european-country="0">
+                      Grenada
+                    </option>
+                    <option value="GP" data-european-country="0">
+                      Guadeloupe
+                    </option>
+                    <option value="GU" data-european-country="0">
+                      Guam
+                    </option>
+                    <option value="GT" data-european-country="0">
+                      Guatemala
+                    </option>
+                    <option value="GG" data-european-country="0">
+                      Guernsey
+                    </option>
+                    <option value="GN" data-european-country="0">
+                      Guinea
+                    </option>
+                    <option value="GW" data-european-country="0">
+                      Guinea-Bissau
+                    </option>
+                    <option value="GY" data-european-country="0">
+                      Guyana
+                    </option>
+                    <option value="HT" data-european-country="0">
+                      Haiti
+                    </option>
+                    <option value="HM" data-european-country="0">
+                      Heard &amp; McDonald Islands
+                    </option>
+                    <option value="HN" data-european-country="0">
+                      Honduras
+                    </option>
+                    <option value="HK" data-european-country="0">
+                      Hong Kong SAR China
+                    </option>
+                    <option value="HU" data-european-country="1">
+                      Hungary
+                    </option>
+                    <option value="IS" data-european-country="0">
+                      Iceland
+                    </option>
+                    <option value="IN" data-european-country="0">
+                      India
+                    </option>
+                    <option value="ID" data-european-country="0">
+                      Indonesia
+                    </option>
+                    <option value="IR" data-european-country="0">
+                      Iran
+                    </option>
+                    <option value="IQ" data-european-country="0">
+                      Iraq
+                    </option>
+                    <option value="IE" data-european-country="1">
+                      Ireland
+                    </option>
+                    <option value="IM" data-european-country="0">
+                      Isle of Man
+                    </option>
+                    <option value="IL" data-european-country="0">
+                      Israel
+                    </option>
+                    <option value="IT" data-european-country="1">
+                      Italy
+                    </option>
+                    <option value="JM" data-european-country="0">
+                      Jamaica
+                    </option>
+                    <option value="JP" data-european-country="0">
+                      Japan
+                    </option>
+                    <option value="JE" data-european-country="0">
+                      Jersey
+                    </option>
+                    <option value="JO" data-european-country="0">
+                      Jordan
+                    </option>
+                    <option value="KZ" data-european-country="0">
+                      Kazakhstan
+                    </option>
+                    <option value="KE" data-european-country="0">
+                      Kenya
+                    </option>
+                    <option value="KI" data-european-country="0">
+                      Kiribati
+                    </option>
+                    <option value="KW" data-european-country="0">
+                      Kuwait
+                    </option>
+                    <option value="KG" data-european-country="0">
+                      Kyrgyzstan
+                    </option>
+                    <option value="LA" data-european-country="0">
+                      Laos
+                    </option>
+                    <option value="LV" data-european-country="1">
+                      Latvia
+                    </option>
+                    <option value="LB" data-european-country="0">
+                      Lebanon
+                    </option>
+                    <option value="LS" data-european-country="0">
+                      Lesotho
+                    </option>
+                    <option value="LR" data-european-country="0">
+                      Liberia
+                    </option>
+                    <option value="LY" data-european-country="0">
+                      Libya
+                    </option>
+                    <option value="LI" data-european-country="0">
+                      Liechtenstein
+                    </option>
+                    <option value="LT" data-european-country="1">
+                      Lithuania
+                    </option>
+                    <option value="LU" data-european-country="1">
+                      Luxembourg
+                    </option>
+                    <option value="MO" data-european-country="0">
+                      Macao SAR China
+                    </option>
+                    <option value="MG" data-european-country="0">
+                      Madagascar
+                    </option>
+                    <option value="MW" data-european-country="0">
+                      Malawi
+                    </option>
+                    <option value="MY" data-european-country="0">
+                      Malaysia
+                    </option>
+                    <option value="MV" data-european-country="0">
+                      Maldives
+                    </option>
+                    <option value="ML" data-european-country="0">
+                      Mali
+                    </option>
+                    <option value="MT" data-european-country="1">
+                      Malta
+                    </option>
+                    <option value="MH" data-european-country="0">
+                      Marshall Islands
+                    </option>
+                    <option value="MQ" data-european-country="0">
+                      Martinique
+                    </option>
+                    <option value="MR" data-european-country="0">
+                      Mauritania
+                    </option>
+                    <option value="MU" data-european-country="0">
+                      Mauritius
+                    </option>
+                    <option value="YT" data-european-country="0">
+                      Mayotte
+                    </option>
+                    <option value="MX" data-european-country="0">
+                      Mexico
+                    </option>
+                    <option value="FM" data-european-country="0">
+                      Micronesia
+                    </option>
+                    <option value="MD" data-european-country="0">
+                      Moldova
+                    </option>
+                    <option value="MC" data-european-country="0">
+                      Monaco
+                    </option>
+                    <option value="MN" data-european-country="0">
+                      Mongolia
+                    </option>
+                    <option value="ME" data-european-country="0">
+                      Montenegro
+                    </option>
+                    <option value="MS" data-european-country="0">
+                      Montserrat
+                    </option>
+                    <option value="MA" data-european-country="0">
+                      Morocco
+                    </option>
+                    <option value="MZ" data-european-country="0">
+                      Mozambique
+                    </option>
+                    <option value="MM" data-european-country="0">
+                      Myanmar (Burma)
+                    </option>
+                    <option value="NA" data-european-country="0">
+                      Namibia
+                    </option>
+                    <option value="NR" data-european-country="0">
+                      Nauru
+                    </option>
+                    <option value="NP" data-european-country="0">
+                      Nepal
+                    </option>
+                    <option value="NL" data-european-country="1">
+                      Netherlands
+                    </option>
+                    <option value="NC" data-european-country="0">
+                      New Caledonia
+                    </option>
+                    <option value="NZ" data-european-country="0">
+                      New Zealand
+                    </option>
+                    <option value="NI" data-european-country="0">
+                      Nicaragua
+                    </option>
+                    <option value="NE" data-european-country="0">
+                      Niger
+                    </option>
+                    <option value="NG" data-european-country="0">
+                      Nigeria
+                    </option>
+                    <option value="NU" data-european-country="0">
+                      Niue
+                    </option>
+                    <option value="NF" data-european-country="0">
+                      Norfolk Island
+                    </option>
+                    <option value="KP" data-european-country="0">
+                      North Korea
+                    </option>
+                    <option value="MK" data-european-country="0">
+                      North Macedonia
+                    </option>
+                    <option value="MP" data-european-country="0">
+                      Northern Mariana Islands
+                    </option>
+                    <option value="NO" data-european-country="0">
+                      Norway
+                    </option>
+                    <option value="OM" data-european-country="0">
+                      Oman
+                    </option>
+                    <option value="PK" data-european-country="0">
+                      Pakistan
+                    </option>
+                    <option value="PW" data-european-country="0">
+                      Palau
+                    </option>
+                    <option value="PS" data-european-country="0">
+                      Palestinian Territories
+                    </option>
+                    <option value="PA" data-european-country="0">
+                      Panama
+                    </option>
+                    <option value="PG" data-european-country="0">
+                      Papua New Guinea
+                    </option>
+                    <option value="PY" data-european-country="0">
+                      Paraguay
+                    </option>
+                    <option value="PE" data-european-country="0">
+                      Peru
+                    </option>
+                    <option value="PH" data-european-country="0">
+                      Philippines
+                    </option>
+                    <option value="PN" data-european-country="0">
+                      Pitcairn Islands
+                    </option>
+                    <option value="PL" data-european-country="1">
+                      Poland
+                    </option>
+                    <option value="PT" data-european-country="1">
+                      Portugal
+                    </option>
+                    <option value="PR" data-european-country="0">
+                      Puerto Rico
+                    </option>
+                    <option value="QA" data-european-country="0">
+                      Qatar
+                    </option>
+                    <option value="RE" data-european-country="0">
+                      Réunion
+                    </option>
+                    <option value="RO" data-european-country="1">
+                      Romania
+                    </option>
+                    <option value="RU" data-european-country="0">
+                      Russia
+                    </option>
+                    <option value="RW" data-european-country="0">
+                      Rwanda
+                    </option>
+                    <option value="WS" data-european-country="0">
+                      Samoa
+                    </option>
+                    <option value="SM" data-european-country="0">
+                      San Marino
+                    </option>
+                    <option value="ST" data-european-country="0">
+                      São Tomé &amp; Príncipe
+                    </option>
+                    <option value="SA" data-european-country="0">
+                      Saudi Arabia
+                    </option>
+                    <option value="SN" data-european-country="0">
+                      Senegal
+                    </option>
+                    <option value="RS" data-european-country="0">
+                      Serbia
+                    </option>
+                    <option value="SC" data-european-country="0">
+                      Seychelles
+                    </option>
+                    <option value="SL" data-european-country="0">
+                      Sierra Leone
+                    </option>
+                    <option value="SG" data-european-country="0">
+                      Singapore
+                    </option>
+                    <option value="SX" data-european-country="0">
+                      Sint Maarten
+                    </option>
+                    <option value="SK" data-european-country="1">
+                      Slovakia
+                    </option>
+                    <option value="SI" data-european-country="1">
+                      Slovenia
+                    </option>
+                    <option value="SB" data-european-country="0">
+                      Solomon Islands
+                    </option>
+                    <option value="SO" data-european-country="0">
+                      Somalia
+                    </option>
+                    <option value="ZA" data-european-country="0">
+                      South Africa
+                    </option>
+                    <option value="GS" data-european-country="0">
+                      South Georgia &amp; South Sandwich Islands
+                    </option>
+                    <option value="KR" data-european-country="0">
+                      South Korea
+                    </option>
+                    <option value="SS" data-european-country="0">
+                      South Sudan
+                    </option>
+                    <option value="ES" data-european-country="1">
+                      Spain
+                    </option>
+                    <option value="LK" data-european-country="0">
+                      Sri Lanka
+                    </option>
+                    <option value="BL" data-european-country="0">
+                      St. Barthélemy
+                    </option>
+                    <option value="SH" data-european-country="0">
+                      St. Helena
+                    </option>
+                    <option value="KN" data-european-country="0">
+                      St. Kitts &amp; Nevis
+                    </option>
+                    <option value="LC" data-european-country="0">
+                      St. Lucia
+                    </option>
+                    <option value="MF" data-european-country="0">
+                      St. Martin
+                    </option>
+                    <option value="PM" data-european-country="0">
+                      St. Pierre &amp; Miquelon
+                    </option>
+                    <option value="VC" data-european-country="0">
+                      St. Vincent &amp; Grenadines
+                    </option>
+                    <option value="SD" data-european-country="0">
+                      Sudan
+                    </option>
+                    <option value="SR" data-european-country="0">
+                      Suriname
+                    </option>
+                    <option value="SJ" data-european-country="0">
+                      Svalbard &amp; Jan Mayen
+                    </option>
+                    <option value="SE" data-european-country="1">
+                      Sweden
+                    </option>
+                    <option value="CH" data-european-country="0">
+                      Switzerland
+                    </option>
+                    <option value="SY" data-european-country="0">
+                      Syria
+                    </option>
+                    <option value="TW" data-european-country="0">
+                      Taiwan
+                    </option>
+                    <option value="TJ" data-european-country="0">
+                      Tajikistan
+                    </option>
+                    <option value="TZ" data-european-country="0">
+                      Tanzania
+                    </option>
+                    <option value="TH" data-european-country="0">
+                      Thailand
+                    </option>
+                    <option value="TL" data-european-country="0">
+                      Timor-Leste
+                    </option>
+                    <option value="TG" data-european-country="0">
+                      Togo
+                    </option>
+                    <option value="TK" data-european-country="0">
+                      Tokelau
+                    </option>
+                    <option value="TO" data-european-country="0">
+                      Tonga
+                    </option>
+                    <option value="TT" data-european-country="0">
+                      Trinidad &amp; Tobago
+                    </option>
+                    <option value="TN" data-european-country="0">
+                      Tunisia
+                    </option>
+                    <option value="TR" data-european-country="0">
+                      Turkey
+                    </option>
+                    <option value="TM" data-european-country="0">
+                      Turkmenistan
+                    </option>
+                    <option value="TC" data-european-country="0">
+                      Turks &amp; Caicos Islands
+                    </option>
+                    <option value="TV" data-european-country="0">
+                      Tuvalu
+                    </option>
+                    <option value="UM" data-european-country="0">
+                      U.S. Outlying Islands
+                    </option>
+                    <option value="VI" data-european-country="0">
+                      U.S. Virgin Islands
+                    </option>
+                    <option value="UG" data-european-country="0">
+                      Uganda
+                    </option>
+                    <option value="UA" data-european-country="0">
+                      Ukraine
+                    </option>
+                    <option value="AE" data-european-country="0">
+                      United Arab Emirates
+                    </option>
+                    <option value="GB" data-european-country="0">
+                      United Kingdom
+                    </option>
+                    <option value="US" data-european-country="0">
+                      United States
+                    </option>
+                    <option value="UY" data-european-country="0">
+                      Uruguay
+                    </option>
+                    <option value="UZ" data-european-country="0">
+                      Uzbekistan
+                    </option>
+                    <option value="VU" data-european-country="0">
+                      Vanuatu
+                    </option>
+                    <option value="VA" data-european-country="0">
+                      Vatican City
+                    </option>
+                    <option value="VE" data-european-country="0">
+                      Venezuela
+                    </option>
+                    <option value="VN" data-european-country="0">
+                      Vietnam
+                    </option>
+                    <option value="WF" data-european-country="0">
+                      Wallis &amp; Futuna
+                    </option>
+                    <option value="EH" data-european-country="0">
+                      Western Sahara
+                    </option>
+                    <option value="YE" data-european-country="0">
+                      Yemen
+                    </option>
+                    <option value="ZM" data-european-country="0">
+                      Zambia
+                    </option>
+                    <option value="ZW" data-european-country="0">
+                      Zimbabwe
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="control-label required" for="city">City</label>
+                  <input type="text" name="city" required minlength="1" maxlength="75" class="input-lg form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="postal_code">Postal Code</label>
+                  <input type="text" name="postal_code" minlength="2" maxlength="50" class="input-lg form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label required" for="address">Address</label>
+                  <textarea name="address" required minlength="2" maxlength="250"
+                    class="input-lg form-control"></textarea>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="registraton-step">
+            <div class="registraton-step_title">
+              <h2>Step 3</h2>
+              <p>Additional Information</p>
+            </div>
+            <div class="registraton-step_card">
+              <div>
+                <div class="form-group">
+                  <label class="control-label" for="phone">Phone</label>
+                  <input type="text" required name="phone" pattern="^[+0-9\-]+$" maxlength="26"
+                    class="input-lg form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="company">Company</label>
+                  <input type="text" name="company" minlength="2" maxlength="250"
+                    class="input-lg user_company form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="VAT">VAT Number</label>
+                  <input type="number" pattern="[0-9]*" name="VAT" class="input-lg user_vat-number form-control" />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="website">Your Website</label>
+                  <input type="text" name="website" minlength="2" maxlength="250" class="input-lg form-control" />
+                </div>
+              </div>
+
+              <div>
+                <label class="control-label required" for="fos_user_registration_form_zip">&nbsp;</label>
+                <input type="submit" class="btn btn-primary full-width" value="Register" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Start Register Area -->
+
+<!-- End Subscribe Area -->
+
+<script>
+  var togglePassword = document.getElementById("toggle-password");
+  var passwordField1 = document.getElementsByName("password1")[0];
+  var passwordField2 = document.getElementsByName("password2")[0];
+
+  togglePassword.onclick = function() {
+      if (passwordField1.type && passwordField2.type == "password") {
+          passwordField1.type = "text";
+          passwordField2.type = "text";
+      } else {
+          passwordField1.type = "password";
+          passwordField2.type = "password";
+      }
+  }
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,322 @@
+
+/*
+ CSS for the main interaction
+*/
+.tabset>input[type="radio"] {
+    position: absolute;
+    left: -200vw;
+}
+
+.tabset .tab-panel {
+    display: none;
+}
+
+.tabset>input:first-child:checked~.tab-panels>.tab-panel:first-child,
+.tabset>input:nth-child(3):checked~.tab-panels>.tab-panel:nth-child(2),
+.tabset>input:nth-child(5):checked~.tab-panels>.tab-panel:nth-child(3),
+.tabset>input:nth-child(7):checked~.tab-panels>.tab-panel:nth-child(4),
+.tabset>input:nth-child(9):checked~.tab-panels>.tab-panel:nth-child(5),
+.tabset>input:nth-child(11):checked~.tab-panels>.tab-panel:nth-child(6),
+.tabset>input:nth-child(13):checked~.tab-panels>.tab-panel:nth-child(7),
+.tabset>input:nth-child(15):checked~.tab-panels>.tab-panel:nth-child(8),
+.tabset>input:nth-child(17):checked~.tab-panels>.tab-panel:nth-child(9),
+.tabset>input:nth-child(19):checked~.tab-panels>.tab-panel:nth-child(10),
+.tabset>input:nth-child(21):checked~.tab-panels>.tab-panel:nth-child(11),
+.tabset>input:nth-child(23):checked~.tab-panels>.tab-panel:nth-child(12) {
+    display: block;
+}
+
+/*
+   Styling
+  */
+
+
+.tabset>label {
+    position: relative;
+    display: inline-block;
+    padding: 15px 15px 25px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tabset>label::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    width: 22px;
+    height: 4px;
+    background: #8d8d8d;
+}
+
+.tabset>label:hover,
+.tabset>input:focus+label {
+    color: #34AF6D;
+}
+
+.tabset>label:hover::after,
+.tabset>input:focus+label::after,
+.tabset>input:checked+label::after {
+    background: #34AF6D;
+}
+
+.tabset>input:checked+label {
+    border-radius: 12px 12px 0px 0px;
+    border-color: #ccc;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+}
+
+.tab-panel {
+    /* padding: 30px 0; */
+    border-top: 1px solid #ccc;
+}
+
+/*
+   Demo purposes only
+  */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+.tabset {
+    border-radius: 12px;
+    border: 1px solid #e4e6eb;
+    max-width: 75em;
+}
+
+.hero {
+    /* background-image: url("http://richardmiddleton.me/modal-hero.jpg"); */
+    background-size: cover;
+    height: 220px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    background-color: blue;
+    border: 2px solid white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 10px 28px;
+    color: white;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.card-container {
+    max-width: 800px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* .card {
+    height: 250px;
+    width: 230px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    margin: 10px;
+} */
+
+
+/*  */
+
+.main-box{
+    border: 1px solid black;
+    padding: 20px;
+    margin-left: -60px;
+    margin-top: 20px;
+
+}
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+.title-input{
+    font-size: 12px;
+    border-radius: 4px;
+    height: 35px;
+    width: 525px;
+    margin: 5px;
+}
+
+.links-input{
+    font-size: 12px;
+    border: 1px solid rgb(174, 173, 173);
+    border-radius: 4px;
+    height: 35px;
+    width: 260px;
+    margin: 5px;
+}
+
+.links-select{
+    background: #f2f2f2;
+    color: #656565 !important;
+    padding: 9px !important;
+}
+
+.but {
+    background-color: orange;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10px 28px;
+    color: white;
+    margin-top: 10px;
+    display: inline-block;
+}
+.tab {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 13px;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab thead tr {
+    color: #fff;
+    background: #ffc93c;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tab th,
+.tab td {
+    padding: 12px 15px;
+}
+
+.tab tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.tab tbody tr:nth-of-type(odd) {
+    background: #f3f3f3;
+}
+
+.tab tbody tr.active {
+    font-weight: bold;
+    color: #4AD489;
+}
+
+.tab tbody tr:last-of-type {
+    border-bottom: 2px solid orange;
+}
+
+.tab button {
+    padding: 6px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid #4AD489;
+}
+
+.tab button:hover {
+    background: #4AD489;
+    color: #fff;
+    transition: 0.5rem;
+}
+.box {
+    border-radius: 2px;
+    padding: 4px 4px 5px 6px;
+    margin-bottom: 10px;
+    height: 59px;
+    border-top : none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid orange;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #333 !important;
+    text-transform: uppercase;
+}
+.box1 {
+    border-radius: 2px;
+    padding: 4px 4px 5px 6px;
+    margin-bottom: 10px;
+    /* border-top : none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid orange; */
+    
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #333 !important;
+    text-transform: uppercase;
+}
+.box2 {
+    /* max-width: 336px; */
+    border-radius: 2px;
+    padding: 4px 4px 5px 6px;
+    margin-bottom: 10px;
+    /* border-top : none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid orange; */
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #333 !important;
+    text-transform: uppercase;
+    /* margin-left: 150px; */
+}
+.box3 {
+    border-radius: 2px;
+    padding: 4px 4px 5px 6px;
+    margin-bottom: 10px;
+    width: 310px;
+    height:60px;
+    /* border-top : none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid orange; */
+    border: solid 1px black;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #333 !important;
+    text-transform: uppercase;
+    margin-top: 9.4px;
+}
+
+
+.span-ad {
+    padding: 2px 7px;
+    line-height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+    position: relative;
+    font-weight: 400;
+    display: block;
+    cursor: pointer;
+}
+
+
+#amount::before {
+    content: "$";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #555;
+}

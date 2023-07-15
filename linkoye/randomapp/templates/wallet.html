@@ -1,0 +1,45 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}wallet{% endblock %}
+{% block wallet_active %}active{% endblock %}
+
+{% block content %}
+
+
+
+<div class="main-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card card-stats">
+              <div class="card-header">
+                  <div class="icon icon-success">
+                      <span class="material-icons">
+                          attach_money
+                      </span><br>
+                    </div>
+              </div>
+              <div class="card-content">
+                  <p class="category"><strong>Current Credit</strong></p>
+                  {% if credit %}
+                  <h3 class="card-title">{{ credit.credit }}</h3>
+                  {% else %}
+                  <h3 class="card-title">Current Credit: 0.00</h3>
+                  {% endif %}
+              </div>
+              <div style="text-align: center;" class="card-footer">
+                  <div class="stats">
+                      <i class="material-icons">date_range</i> Credit from Publisher account
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+<div class="text-center">
+    <a class="mb-5 btn btn-warning" href="/top_up_wallet">Add Credit</a>
+</div>
+
+
+{% endblock %}

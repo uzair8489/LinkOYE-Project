@@ -1,0 +1,71 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Site Details{% endblock %}
+{% load cart %}
+
+{% block content %}
+
+<div>
+    {% for data in site_detail %}
+    <div style="height: 110px; width: 150px; display: flex;">
+        <img style="width: 100px; height:100px" src="" alt="">&nbsp;
+        <span><a href="{{ data.URL }}">{{ data.URL }}</a></span>
+    </div>
+
+    <div style="float: left;">
+        <span class="badge badge-warning">Blog/Web</span>
+    </div>
+    <div style="float: right;">
+
+
+    </div>
+    <br>
+    <div>
+        <label><b>Description:</b></label>
+        <p>{{ data.Description }}</p>
+    </div>
+
+    <table class="tab">
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Language</th>
+                <th>Link</th>
+                <th>Restricted Topics</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- <td hidden id="sid"></td> -->
+                <td>{{ data.Country }}</td>
+                <td>{{ data.Language }}</td>
+                <td>{{ data.Link_Allowed }}</td>
+                <td>{{ data.Restricted_Topics }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="box">
+        <label>CATEGORIES</label><br>
+        <span style="font-size: 9.7px;"><i class="fa-solid fa-bookmark"></i>Miscellaneous</span>
+    </div>
+    <div class="box2">
+        <label>SEO METRICS&nbsp;</label>
+        <div class="box3">
+            <div>
+                <p class="badge badge-pill badge-secondary">DA</p>
+                <p class="badge badge-pill badge-secondary">PA</p>
+                <p class="badge badge-pill badge-secondary">Traffic</p>
+            </div>
+            <a>{{ data.DA }}</a>
+            <a style="margin: 14px;" id="mPA">{{ data.PA }}</a>
+            <a id="mtraffic">{{ data.Organic_Traffic }}</a>
+        </div>
+    </div>
+    <div class="my-3 text-center">
+        <a href="{% url 'buypost' data.URL %}" class="btn btn-success">Buy Post</a>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'base-1.html' %}
+{% block title %}Guest Posting{% endblock %}
+{% block gp_active %}active{% endblock %}
+{% load static %}
+
+
+
+{% block content %}
+
+        <div class="main-content">
+           
+          
+
+            <section class="our_service_area">
+                <div class="container">
+                    <div class="main_title">
+                        <h2>Our Service</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 wow fadeIn mb-3" data-wow-delay="1s">
+                            <div class="service_item">
+                                <i class="fa fa-solid fa-link"></i>
+                                <a href="#">
+                                    <h3>Guest Post Options</h3>
+                                </a>
+                                <p>
+                                Discover thousands of websites offering paid articles, including blogs, sponsored posts and press releases with high-traffic and high DA sites. Prices start at just 10$, ensuring you'll find what you need.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 wow fadeIn mb-3" data-wow-delay="2s">
+                            <div class="service_item">
+                                <i class="fa fa-money-bill"></i>
+                                <a href="#">
+                                    <h3>Unbeatable Prices!</h3>
+                                </a>
+                                <p>
+                                    LinkOYE offers the most competitive prices in the global market, ensuring that you get the best value for your sales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 wow fadeIn mb-3" data-wow-delay="3s">
+                            <div class="service_item">
+                                <i class="fa fa-desktop"></i>
+                                <a href="#">
+                                    <h3>The Best Websites</h3>
+                                </a>
+                                <p>
+                                    At LinkOYE, our decade-long experience in searching for the finest websites across various languages such as Polish, Spanish, Arabic, and English, guarantees you the lowest prices on the market with the assurance of 100% guest post publication.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================End Service Area =================-->
+
+            <!--================Detail Area =================-->
+           
+            <!--================End Detail Area =================-->
+
+            <!--================Feature Area =================-->
+        
+            <!--================End Feature Area =================-->
+
+
+
+            <!--================Sponsors Area =================-->
+           
+            <!--================End Sponsors Area =================-->
+
+            <!--================Map Area =================-->
+            <section class="map_area" id="contact">
+                <div class="contact_info">
+                    <div class="area-bg"></div>
+                    <div class="container">
+                        <div class="main_title">
+                            <h2>Contact Us</h2>
+                            {% if messages %}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {% for message in messages %}
+                                {{message}}
+                                {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                                <div class="contact_form_left">
+                                    <form method="post" class="form-horizontal">
+                                        {% csrf_token %}
+                                        <div id="contact">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label required" for="name">Name</label>
+                                                <div class="col-sm-12"><input type="text" name="name" required class="form-control" /></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label required" for="email">Email</label>
+                                                <div class="col-sm-12"><input type="text" name="email" required minlength="3" maxlength="254" class="form-control" /> </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label required" for="subject">Subject</label>
+                                                <div class="col-sm-12"><input type="text" name="subject" required class="form-control" /></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label required" for="message">Message</label>
+                                                <div class="col-sm-12"><textarea name="message" required class="form-control"></textarea></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-3">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <button type="submit" class="btn-default submit_btn btn">Send Message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+
+
+{% endblock %}

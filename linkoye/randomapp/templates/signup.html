@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <!--med_tittle_section-->
+    <div class="med_tittle_section">
+        <div class="med_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="med_tittle_cont_wrapper">
+                        <div class="med_tittle_cont">
+                            <h1>Sing up </h1>
+                            <ol class="breadcrumb">
+                                <li><a href="">Home</a>
+                                </li>
+                                <li>Sign Up</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- med_tittle_section End -->
+
+    <div class="login_wrapper_top float_left">
+        <div class="login_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="login_tab_top_wrap float_left">
+                        <div class="btn_log">
+                            <a href="#">REGISTER</a>
+                        </div>
+                        {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                        <!-- <div>
+                            {% for message in messages %}
+                            <h3 style="color: black;">{{message}}</h3>
+                            {% endfor %}
+                        </div> --> 
+                        <form action="user_signup" class="needs-validation" method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="login_wrapper float_left">
+                                <div class="formsix-pos">
+                                    <div class="form-group i-email">
+                                        <input type="text" class="form-control" required="" pattern="[a-zA-Z'-'\s]*" oninvalid="setCustomValidity('Please enter Text only.')" name="first_name" placeholder="First Name" autofocus>
+                                    </div>
+                                </div>
+                                <div class="formsix-pos">
+                                    <div class="form-group i-email">
+                                        <input type="text" class="form-control" required="" pattern="[a-zA-Z'-'\s]*" oninvalid="setCustomValidity('Please enter Text only.')" name="last_name" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="formsix-pos">
+                                    <div class="form-group i-email">
+                                        <input type="text" class="form-control" required="" pattern="[A-Za-z0-9]+" oninvalid="setCustomValidity('Username Should not contain any space.')" name="username" placeholder="Username*">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email"  value="" placeholder="Email*" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="phone" minlength="11" maxlength="11" data-inputmask="'mask': '9999-9999999'" required autofocus placeholder="phone">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group i-password">
+                                        <input type="password" class="form-control" required="" name="password1" id="password1" placeholder="Password *">
+                                    </div>
+                                    <div class="form-group i-password">
+                                        <input type="password" class="form-control" required="" name="password2" data-v-equal="#password1" placeholder="Confirm Password *">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control" name = "address" placeholder="Address *"></textarea>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="response"></div>
+                                    <div class="contact_btn_wrapper med_toppadder30">
+                                        <button type="submit" class="submitForm">submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--news wrapper start-->
+    <div class="newsletter_wrapper med_toppadder80 med_bottompadder70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12">
+                    <div class="newsletter_text wow fadeOut" data-wow-delay="0.5s">
+                        <h3>Your First Step Towards Oral Health For Life Starts Here :</h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-12 col-sm-6 col-6">
+                    <div class="contect_btn_news">
+                        <ul>
+                            <li><a href="#">Enquiry</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--news wrapper end-->
+
+    
+    {% endblock %}
+   

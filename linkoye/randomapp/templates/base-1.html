@@ -1,0 +1,269 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+   
+
+
+    <link rel="icon" href="{% static 'images/shortlogo.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/css_bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/css_responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css_main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/css_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css" />
+    
+
+    <!-- favicon link-->
+    <link rel="shortcut icon" type="image/icon" href="{% static 'images/shortlogo.png' %}">
+
+    {% block user_p %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="icon" type="image/png" href="{% static 'images/shortlogo.png' %}">
+</head>
+
+<body>
+
+    <!-- Start Preloader Area -->
+    <!-- <div class="preloader">
+        <div class="loader">
+            <div class="shadow"></div>
+            <div class="box"></div>
+        </div>
+    </div> -->
+    <!-- End Preloader Area -->
+
+    <!-- Start Navbar Area -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <div class="logo-here">
+                <a href="/"><img src="{% static 'images/logofile.png' %}" alt="img"
+                    class="img-fluid"></a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {% block index_active %}{% endblock %}"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item {% block gp_active %}{% endblock %}"><a class="nav-link" href="/guest_posting">Guest Posting</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Hello {{request.user.username}}
+                        </a>
+                        <div style="background: #293846;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="dashboard">DASHBOARD</a>
+                          <a class="dropdown-item" href="userprofile">USER PROFILE</a>
+                          <a class="dropdown-item" href="change_password">CHANGE PASSWORD</a>
+                          <a class="dropdown-item" href="logout">LOGOUT</a>
+                        </div>
+                      </li>
+                    <!-- <li class="has-mega "><a href="#" class="hover_color"> Hello {{request.user.username}}
+                        </a>
+                        <ul>
+                            <li><a class="parent" href="patient_profile">User Profile</a></li>
+                            <li><a class="parent" href="change_password">Change Password</a></li>
+                            <li><a class="parent" href="logout">Logout</a></li>
+                        </ul>
+                    </li> -->
+                    {% else %}
+                    <li class="nav-item {% block sup_active %}{% endblock %}"><a class="nav-link" href="/signup">Sign up </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link {% block lin_active %}{% endblock %}" href="/login"> Log in</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <!--End container-->
+    </nav>
+    <!-- End Navbar Area -->
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+
+    <!-- Start Footer Area -->
+    
+    <section class="wraper_footer pxm">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12 text-center">
+                    <div class="footerlogo">
+                        <a href="/">
+                        <img src="{% static 'images/logofile.png' %}" alt="img" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-lg-3">
+                    <ul class="footer_navbar">
+                        <h4 class="titlenavbar">Learn more</h4>
+                        <li><a href="#">How can I buy guest posts ?</a></li>
+                        <li><a href="#">How can I sell guest posts ?</a></li>
+                        <li><a href="#">How do I create a copywriting project ?</a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                    <div class="footer_navbar">
+                        <h4 class="titlenavbar">Articles</h4>
+                        <ul class="footer_text">
+                            <li><a href="#">FAQ - Buy guest posts</a></li>
+                            <li><a href="#">FAQ - Selling guest posts</a></li>
+                            <li><a href="#">FAQ - Copywriting project</a></li>
+                            <li><a href="#">How do I install the plugin on my blog ?</a></li>
+                        </ul>
+                        <ul class="footer_text spacework">
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footeraddress">
+                        <h4 class="titlenavbar">Let’s stay in touch</h4>
+                        <p><i class="fas fa-map-marker-alt"></i>We’ll respond within a few hours</p>
+                        <p><i class="fas fa-phone-volume"></i>Skype : linkOYE</p>
+                        <p><i class="fas fa-envelope"></i>cont.Linkoye.com</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row wraperfootercoppy">
+                <div class="col-md-8">
+                    <div class="coppyright">
+                        <p>LinkOye © Copyright - All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End Footer Area -->
+
+    <!-- Start Go Top Area -->
+    <div class="go-top">
+        <i class='bx bx-chevron-up'></i>
+    </div>
+
+        <!-- Jquery Slim JS -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <!-- Bootstrap JS -->
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Meanmenu JS -->
+        <script src="{% static 'js/jquery.meanmenu.js' %}"></script>
+        <!-- Appear Min JS -->
+        <script src="{% static 'js/jquery.appear.min.js' %}"></script>
+        <!-- Odometer Min JS -->
+        <script src="{% static 'js/odometer.min.js' %}"></script>
+        <!-- Owl Carousel JS -->
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <!-- Popup JS -->
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <!-- Nice Select JS -->
+        <!-- <script src="{% static 'js/jquery.nice-select.min.js' %}"></script> -->
+        <!-- Ajaxchimp JS -->
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <!-- Form Validator JS -->
+        <script src="{% static 'js/form-validator.min.js' %}"></script>
+        <!-- Contact JS -->
+        <script src="{% static 'js/contact-form-script.js' %}"></script>
+        <!-- Wow JS -->
+        <script src="{% static 'js/wow.min.js' %}"></script>
+        <!-- Custom JS -->
+        <script src="{% static 'js/main.js' %}"></script>
+
+
+
+
+        <!-- f_end js -->
+<script type="text/javascript" src="{% static 'js/js_bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/js_custom.js' %}"></script>
+<script src="{% static 'js/typed.js' %}"></script>
+<!-- <script type="text/javascript">
+    var translations = {
+        cookieConsent: 'By continuing on LinkOYE, you accept the use of Cookies to facilitate your navigation and receive relevant content according to your language selection.',
+        cookieButton: 'I understand',
+    };
+</script> -->
+<!-- RGPD and Cookies policy -->
+<script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
+<script>
+    window.addEventListener("load", function() {
+        window.wpcc.init({
+            "corners": "large",
+            "colors": {
+                "popup": {
+                    "background": "#19aa89",
+                    "text": "#ffffff",
+                    "border": "#737578"
+                },
+                "button": {
+                    "background": "#ffffff",
+                    "text": "#737578"
+                }
+            },
+            "position": "bottom",
+            "padding": "large",
+            "margin": "large",
+            "transparency": "15",
+            "content": {
+                "href": "#",
+                "button": translations.cookieButton,
+                "link": "",
+                "message": translations.cookieConsent
+            }
+        })
+    });
+</script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="{% static 'js/js_particles.js' %}"></script>
+<script src="{% static 'js/js_app.js' %}"></script>
+<script src="{% static 'js/js_main.js' %}"></script>
+<script>
+    AOS.init();
+</script>
+
+<script>
+    var typed = new Typed('.type', {
+    strings: [
+        'More sales', 
+        'More visibility',
+        "Higher in google"],
+        typeSpeed:60,
+        backSpeed:60,
+        loop:true,
+        smartBackspace: true // Default value
+
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Buy Post{% endblock %}
+{% block proposal_active %}active{% endblock %}
+{% load cart %}
+
+{% block content %}
+
+<script>
+    function loaddata()
+    {
+        var la = $('#LA');
+        var link = la.text();
+        for (var i=1; i<=link;i++)
+            $(".KUL").append('<div class="form-row"><div class="mb-2 col-lg-4 col-md-4"><input name="keyword" class="input-form-v2 input-sm input-dashed form-control " type="text"placeholder="Keyword'+' '+i+'" value=""></div><div class="mb-2 col-lg-4 col-md-4"><input name="url" autocomplete="off" class="input-form-v2 input-sm input-dashed form-control " type="url" placeholder="URL'+' '+i+'" value=""></div><div class="mb-2 col-lg-4 col-md-4"><select name="link-type" class="input-form-grey input-sm select-sm form-control"><option>Link type</option><option>Follow</option></select></div></div>');
+    }
+    window.onload= loaddata
+</script>
+<!-- <p id="tmc">tinymice content</p> -->
+<form method="POST">
+    {% csrf_token %}
+    <div class="wrap p-b-0 p-t-0">
+        <div class="row">
+            <div class="col-11 p-t-md p-b-0">
+                {% for data in site_data %}
+                <h3 hidden id="LA">{{ data.Link_Allowed }}</h3>
+                <input hidden type="text" name="URL" id="" value="{{ data.URL }}">
+                <input hidden type="text" name="price" id="" value="{{ data.Price }}">
+                <h3 class="main-title-in">Buy sponsored post on <a href="https://{{ data.URL }}" target="_blank"><b>{{ data.URL }}</b></a></h3>
+                <p class="p-v2" id="alert-buy"><strong>Information not included in the details will not be taken into account by the editor in making the post or subsequent modifications.</strong></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <hr>
+        <div class="row m-b-sm">
+            <div class="col-12">
+                <div class="resume-request-box">
+                    <div class="form-row">
+                        <div class="form-group form-group-v2 col-sm-6">
+                            <label class="p-14"><strong>Post title (specify or suggest one)</strong> <i
+                                    class="fa fa-info-circle" data-toggle="tooltip" data-html="true" data-placement="top"
+                                    title=""
+                                    data-original-title="The title may be modified if its cosidered by the publisher in order to improve naturalness and SEO content "></i>
+                            </label>
+                            <input type="text" required name="title" class="input-form-v2 input-sm form-control">
+                        </div>
+                        <div class="form-group form-group-v2  col-xs-12 col-sm-6">
+                            <label class="p-14"><strong>Deadline to hand in the order</strong> <span class="strong-orange">*</span></label>
+                            <input required type="date" name="limit_time" autocomplete="off" class="limittime input-form-v2 input-sm form-control hasDatepicker" id="datefield">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12">
+                            <p class="p-14 label-only m-b-0">
+                                <span class="label-strong">Links</span> for the post <span class="label-lighter"> (this medium accepts up to {{ data.Link_Allowed }} links per post, complete at least one)</span>
+                                <span class="strong-orange">*</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="KUL">
+                        <!-- <div class="m-b-xs col-lg-4 col-md-6">
+                            <input name="keyword1" required="" autocomplete="off" class="input-form-v2 input-sm input-dashed form-control " type="text"
+                                placeholder="Keyword 1" value="">
+                        </div> -->
+                        <!-- <div class="m-b-xs col-lg-4 col-md-6">
+                            <input name="url1" autocomplete="off" class="input-form-v2 input-sm input-dashed form-control " type="url" placeholder="URL 1" required="" value="">
+                        </div>
+                        <div class="m-b-xs col-lg-4 col-md-6">
+                            <select name="type_link_1" class="input-form-grey input-sm select-sm form-control" required="">
+                                <option value="">Link type</option>
+                                <option value="0">Follow</option>
+                            </select>
+                        </div> -->
+                    </div>
+                    <div class="form-row m-t-xs">
+                        <div class="form-group form-group-v2  col-12">
+                            <label class="p-14"><strong>Details of the order </strong> <span class="strong-orange">*</span></label>
+                            <textarea placeholder="Tell the Publisher what you want the sponsored post to be about. It is not allowed to include contact details." name="odetails" id="mytextarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row m-t-xs">
+                        <div class="form-group form-group-v2  col-12">
+                            <label class="p-14"><strong>Image to be included </strong> <i class="fa fa-info-circle"
+                                    data-toggle="tooltip" data-html="true" data-placement="top" title=""
+                                    data-original-title="You can optionally indicate which image the editor should use in the publication."></i>
+                                <small>(Recommended size: 150KB)</small> </label>
+                            <div class="custom-file  m-t-xs">
+                                <input disabled type="file" class="custom-file-input" name="postimg" accept=".jpg, .jpeg, .png, .gif"
+                                    id="validatedCustomFile">
+                                <label class="custom-file-label" for="validatedCustomFile">Select an image in .jpg, .png or
+                                    .gif format.</label>
+    
+                            </div>
+                        </div>
+                        <div class="mb-2 m-auto">
+                            <b>OR</b>
+                        </div>
+                        <div class="form-group form-group-v2  col-12">
+                            <label class="p-14"><strong>Paste the image url </strong><i class="fa fa-info-circle"></i></label>
+                            <div class="custom-file  m-t-xs">
+                                <input type="text" value="" name="imgurl" class="input-form-v2 input-sm form-control">
+                                <p>Use <u><a style="color: #ffc93c;" href="https://imgbb.com/">imgbb</a></u> for converting your image to url</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group form-group-v2  col-lg-6">
+                            <label class="p-14"><strong>Avoid following terms </strong> </label>
+                            <textarea name="avoidingterms" class="form-control m-t-xs"
+                                placeholder="Let the publisher know if you don't want a topic to appear on the post"></textarea>
+                        </div>
+                        <div class="form-group form-group-v2  col-lg-6">
+                            <label class="p-14"><strong>Information source </strong> </label>
+                            <textarea name="infosource" class="form-control m-t-xs"
+                                placeholder="You can suggest the publisher articles with useful information to write the post or add as an information source."></textarea>
+                        </div>
+                    </div>
+                    <div id="resultweb"></div><br>
+                    <div class="col-12 text-center">
+                        <input hidden type="text" name="sid" id="" value="{{ data.id }}">
+                        <input type="submit" id="atc" class="mb-2 btn btn-warning" value="Add to cart">
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% endfor %}
+{% endblock %}

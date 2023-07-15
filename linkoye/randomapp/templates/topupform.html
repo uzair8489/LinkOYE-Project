@@ -1,0 +1,28 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Add Credit{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2 class="text-center">Top Up Your Wallet</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input type="number" class="form-control" id="amount" name="amount" required>
+            </div>
+        </div>
+        <div class="container text-center">
+            <button type="submit" class="text-center text-white btn btn-warning">Add Top Up</button>
+          </div>
+    </form>
+</div>
+
+
+{% endblock %}

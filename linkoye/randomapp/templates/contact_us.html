@@ -1,0 +1,122 @@
+﻿{% extends 'base-1.html' %}
+{% block title %}Contact Us{% endblock %}
+{% block contact_active %}active{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+        <!-- Start Page Banner -->
+        <div class="page-banner-area item-bg3">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Contact Style Two</h2>
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li>Contact Style Two</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Contact Area -->
+        <section class="contact-area ptb-100">
+            <div class="container">
+                <div class="section-title">
+                    <span>Get in Touch</span>
+                    <h2>Ready to Get Started?</h2>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <div class="contact-image">
+                            <img src="{% static 'images/contact.png' %}" alt="image">
+                        </div>
+                    </div>
+                    {% if not messages %}
+                    <div class="col-lg-7">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="contact-form-inner">
+                                <form id="contactForm">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="name" id="name" class="form-control" required="" data-error="Please enter your name" placeholder="Name">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" id="email" class="form-control" required="" data-error="Please enter your email" placeholder="Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-6 col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="subject" id="subject" class="form-control" required="" data-error="Please enter your subject" placeholder="Subject">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="message" class="form-control" id="message" cols="30" rows="5" required="" data-error="Write your message" placeholder="Your Message"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+    
+                                        <div class="col-lg-12 col-md-12">
+                                            <button type="submit" class="default-btn">Send Message</button>
+                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
+                    </div>
+                    {% else %}
+                    {% for message in messages %}
+                    <div class="col-lg-7">
+                        <p>{{message}}</p>
+                    </div>
+                    {% endfor %}
+
+                    {% endif %}
+                    
+                </div>
+
+                <div class="general-contact-info">
+                    <div class="contact-info-content">
+                        <h3>Contact us by Phone Number or Email Address</h3>
+                        <h2>
+                            <a href="tel:+0881306298615">+088 130 629 8615</a>
+                            <span>OR</span>
+                            <a href="/cdn-cgi/l/email-protection#d7a4a7beaf97b0bab6bebbf9b4b8ba"><span class="__cf_email__" data-cfemail="d1a2a1b8a991b6bcb0b8bdffb2bebc">[email&#160;protected]</span></a>
+                        </h2>
+
+                        <ul class="social">
+                            <li><a href="#" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                            <li><a href="#" target="_blank"><i class='bx bxl-youtube'></i></a></li>
+                            <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                            <li><a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                            <li><a href="#" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Area -->>
+
+{% endblock %}

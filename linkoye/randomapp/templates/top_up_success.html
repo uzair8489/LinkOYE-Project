@@ -1,0 +1,18 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Top Up Added{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <h2 class="text-center">Top Up Successful</h2>
+    <p>Your order ID is: <b>{{ order_id }}</b></p>
+    <p>IBAN: <b>{{ IBAN }}</b></p>
+    <p>Please transfer the amount of ${{ amount }} to our bank account using the <b>{{order_id}}</b> as reference.</p>
+    <p>We will add the credit to your wallet as soon as we receive the payment.</p>
+</div>
+
+<hr>
+{% endblock %}

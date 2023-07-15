@@ -1,0 +1,432 @@
+{% load static %}
+{% load cart %}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/detailsheet.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!----css3---->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'images/shortlogo.png' %}">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="body-overlay"></div>
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="/"><h3><img style="border-radius: 10px; width:215px" src="{% static 'images/logofile.png' %}" class="img-fluid" /></h3></a>
+            </div>
+            <ul class="list-unstyled components">
+                <li class="{% block dash_active %}{% endblock %}">
+                    <a href="/dashboard" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                </li>
+                <div class="small-screen navbar-display">
+                    <li class="dropdown d-lg-none d-md-block d-xl-none d-sm-block">
+                        <a href="#homeSubmenu0" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="material-icons">shopping_cart</i>Cart
+                            <span class="notification">({{request.session.cart.keys|length}})</span>
+                        </a>
+                        <ul class="collapse list-unstyled menu" id="homeSubmenu0">
+                                <table class="table align-middle mb-0 bg-white">
+                                    <thead class="bg-dark text-white">
+                                      <tr>
+                                        <th>#</th>
+                                        <th>Website</th>
+                                        <th>Price</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for data in sites %}
+                                      <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>
+                                          <div class="d-flex align-items-center">
+                                            <div class="ms-3">
+                                              <p class="fw-bold mb-1">{{ data.URL }}</p>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <p class="fw-normal mb-1">{{ data.Price|currency }}</p>
+                                          <!-- <p>Quantity: {{ data|cart_quantity:request.session.cart}}</p> -->
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2">Total</th>
+                                            <th>{{ sites|total_cart_price:request.session.cart|currency }}</th>
+                                        </tr>
+                                      </tfoot>
+                                  </table>
+                                  <div class="p-2 text-center">
+                                    <a href="/cart" class="btn btn-warning">Go To Cart</a>
+                                </div>
+
+                            </ul>
+                            
+                    </li>
+                </div>
+                <!-- <li class="{% block proposal_active %}{% endblock %}">
+                    <a href="/myorders"><i class="material-icons">wallet</i><span>Proposals</span></a>
+                </li> -->
+
+                <li class="dropdown">
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="material-icons">campaign</i><span>Advertiser</span></a>
+                    <ul class="collapse list-unstyled menu" id="pageSubmenu2">
+                        <li class="dropdown">
+                            <a href="#qpm" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <i class="material-icons">storefront</i>Marketplace</a>
+                                <ul class="collapse list-unstyled menu" id="qpm">
+                                    <li class="dropdown">
+                                        <a href="/quickpurchase">
+                                            <i class="material-icons">store</i>Quick Purchase</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="/myorders">
+                                            <i class="material-icons">redeem</i>My Orders</a>
+                                    </li>
+                                </ul>
+                            <!-- <a class="dropdown-btn dropdown-toggle"><i class="material-icons">apps</i>Marketplace</a> -->
+                            <!-- <div id="qpm" style="display: none;">
+                                <a style="padding-left: 30px;" class="span-ad {% block qp_active %}{% endblock %}" href="/quickpurchase"><i
+                                        class="material-icons">apps</i>Quick Purchase</a>
+                                <a style="padding-left: 30px;" class="span-ad" href="/myorders"><i
+                                        class="material-icons">apps</i>My Orders</a>
+                            </div> -->
+                            
+                            
+
+                        </li>
+
+
+                        <!-- <li>
+                            <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                                class="dropdown-toggle">
+                                <i class="material-icons">apps</i><span>Publisher</span></a>
+                            <a href="#">Page 1</a>
+                        </li> -->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="material-icons">pages </i><span>Publisher</span></a>
+                    <ul class="collapse list-unstyled menu" id="pageSubmenu3">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-btn"><i class="material-icons">web</i>Coming Soon
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <a class="dropdown-btn dropdown-toggle"><i class="material-icons">pages </i><span>Publisher</span>
+
+                    </a>
+                    <div style="display: none;">
+                        <a style="padding-left: 30px;" class="span-ad" href="#"><i
+                                class="material-icons">apps</i>Websites</a>
+                    </div> -->
+
+                </li>
+                <li class="dropdown">
+                    <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="material-icons">wallet </i><span>Wallet</span></a>
+                    <ul class="collapse list-unstyled menu" id="pageSubmenu4">
+                        <li class="dropdown">
+                            <a href="/wallet" class="dropdown-btn"><i class="material-icons">account_balance_wallet</i>Wallet Credit
+                            <a href="/wallet_transactions" class="dropdown-btn"><i class="material-icons">receipt</i>Wallet Transcations
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <a class="dropdown-btn dropdown-toggle"><i class="material-icons">pages </i><span>Publisher</span>
+
+                    </a>
+                    <div style="display: none;">
+                        <a style="padding-left: 30px;" class="span-ad" href="#"><i
+                                class="material-icons">apps</i>Websites</a>
+                    </div> -->
+
+                </li>
+                <!-- <li class="{% block wallet_active %}{% endblock %}">
+                    <a href="/wallet"><i class="material-icons">wallet</i><span>Wallet</span></a>
+                </li> -->
+
+                <li class="">
+                    <a href="/userprofile"><i class="material-icons">settings</i><span>Edit Profile</span></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Page Content  -->
+        <div id="content">
+
+            <div class="top-navbar">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                            <span class="material-icons">arrow_back_ios</span>
+                        </button>
+
+                        <a class="navbar-brand" href="/dashboard"> Dashboard </a>
+
+                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button"
+                            data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="material-icons">more_vert</span>
+                        </button>
+
+                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none"
+                            id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="dropdown nav-item active">
+                                    <a href="#" class="nav-link" data-toggle="dropdown">
+                                        <span class="material-icons">shopping_cart</span>
+                                        <span class="notification">{{request.session.cart.keys|length}}</span>
+                                    </a>
+                                    <ul class="dropdown-menu p-2">
+                                        <table class="table align-middle mb-0 bg-white">
+                                            <thead class="bg-dark text-white">
+                                              <tr>
+                                                <th>#</th>
+                                                <th>Website</th>
+                                                <th>Price</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for data in sites %}
+                                              <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>
+                                                  <div class="d-flex align-items-center">
+                                                    <div class="ms-3">
+                                                      <p class="fw-bold mb-1">{{ data.URL }}</p>
+                                                    </div>
+                                                  </div>
+                                                </td>
+                                                <td>
+                                                  <p class="fw-normal mb-1">{{ data.Price|currency }}</p>
+                                                  <!-- <p>Quantity: {{ data|cart_quantity:request.session.cart}}</p> -->
+                                                </td>
+                                              </tr>
+                                              {% endfor %}
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="2">Total</th>
+                                                    <th>{{ sites|total_cart_price:request.session.cart|currency }}</th>
+                                                </tr>
+                                              </tfoot>
+                                          </table>
+                                        <!-- <li>
+                                            <a href="#">You have 5 new messages</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">You're now friend with Mike</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Wish Mary on her birthday!</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">5 warnings in Server Console</a>
+                                        </li> -->
+                                        
+                                        <div class="p-2 text-center">
+                                            <a href="/cart" class="btn btn-warning">Go To Cart</a>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/userprofile">
+                                        <span class="material-icons">person</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+
+            <div class="main-content">
+            {% block content %}
+
+            
+            
+            {% endblock %}
+        </div>
+
+        </div>
+        
+    </div>
+    <!-- <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <nav class="d-flex float-right">
+                        <ul class="m-0 p-0">
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+                <div class="col-md-6">
+                    <p class="copyright d-flex justify-content-end"> &copy 2021 Design by
+                        <a href="#">Vishweb Design</a> BootStrap Admin Dashboard
+                    </p>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+Remove this line: <script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.1.36/build/pdfmake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.1.36/build/vfs_fonts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.2/dist/purify.min.js"></script>
+
+
+
+<!-- <script src="{% static 'js/jspdf.min.js' %}"></script> -->
+<script src="https://use.fontawesome.com/1ca0dc3b7d.js"></script>
+<script src="{% static 'ckeditor/ckeditor.js' %}"></script>
+<script>
+    let YourEditor;
+    ClassicEditor
+    .create( document.querySelector( '#mytextarea' ), {
+        toolbar: {
+            items: [
+                'heading',
+                '|',
+                'bold',
+                'italic',
+                'link',
+                'bulletedList',
+                'numberedList',
+                'alignment', // add alignment option
+                'blockQuote',
+                'undo',
+                'redo'
+            ]
+        },
+        language: 'en',
+        alignment: { // add alignment configuration
+            options: [ 'left', 'center', 'right', 'justify' ]
+        }
+    } )
+.then(editor => {
+    window.editor = editor;
+    YourEditor = editor;
+    editor.ui.view.editable.element.style.height = '300px';
+})
+.catch(error => {
+    console.error(error);
+});
+
+</script>
+{% block disable %}{% endblock %}
+<!-- <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      plugins: [
+        'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+        'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+        'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+      ],
+      toolbar: 'undo redo | formatpainter casechange blocks | bold italic backcolor | ' +
+        'alignleft aligncenter alignright alignjustify | ' +
+        'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+    });
+  </script> -->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $('#content').toggleClass('active');
+        });
+
+        $('.more-button,.body-overlay').on('click', function () {
+            $('#sidebar,.body-overlay').toggleClass('show-nav');
+        });
+
+    });
+
+</script>
+<script>
+    function showhidead() {
+
+        var elem1 = document.getElementById("ad-chevron");
+
+
+        if (elem1.className == "fa fa-chevron-right") {
+            elem1.className = "fa fa-chevron-down";
+        }
+        else {
+            elem1.className = "fa fa-chevron-right";
+        }
+
+        for (let elem of document.getElementsByClassName("qpo")) {
+            if (elem.style.display == "none")
+                elem.style.display = "block";
+
+            else
+                elem.style.display = "none";
+
+        }
+    }
+
+</script>
+</body>
+
+</html>

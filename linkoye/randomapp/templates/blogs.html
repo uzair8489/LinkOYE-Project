@@ -1,0 +1,70 @@
+﻿{% extends 'base-1.html' %}
+{% block title %}Blogs{% endblock %}
+{% block blogs_active %}active{% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+        <!-- Start Page Banner -->
+        <div class="page-banner-area item-bg1">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="page-banner-content">
+                            <h2>Blogs</h2>
+                            <ul>
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
+                                <li>Blogs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Banner -->
+
+        <!-- Start Blog Area -->
+        <section class="blog-area pt-100 pb-100">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for data in blogs %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog">
+                            <div class="image">
+                                <a href="{% url 'blogs_details' data.id %}">
+                                    <img src="{{ data.Thumbnail.url }}" alt="image">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="{% url 'blogs_details' data.id %}">{{ data.Blog_Title }}</a>
+                                </h3>
+                                <a href="{% url 'blogs_details' data.id %}" class="blog-btn">Read More <i class='bx bx-chevrons-right'></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="default-shape">
+                <div class="shape1">
+                    <img src="{% static 'images/default-shape/default-shape1.png' %}" alt="image">
+                </div>
+                <div class="shape2">
+                    <img src="{% static 'images/default-shape/default-shape2.png' %}" alt="image">
+                </div>
+                <div class="shape3">
+                    <img src="{% static 'images/default-shape/default-shape3.png' %}" alt="image">
+                </div>
+                <div class="shape4">
+                    <img src="{% static 'images/default-shape/default-shape4.png' %}" alt="image">
+                </div>
+            </div>
+        </section>
+        <!-- End Blog Area -->
+
+     {% endblock %}

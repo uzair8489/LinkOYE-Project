@@ -1,0 +1,48 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block dash_active %}active{% endblock %}
+{% load cart %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="navbar text-center card-title "><b>Top Selling</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% for site in top_selling_sites %}
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="card card-stats">
+                            <div class="card-content">
+                                {% if site.Image %}
+                                    <img class="float-left" style="height: 80; width: 90px;" src="{{ site.Image.url }}" alt="No Image">
+                                    {% else %}
+                                    <div class="icon icon-warning">
+                                        <span class="float-left material-icons">equalizer</span>
+                                    </div>
+                                    {% endif %}
+                                <h3 class="card-title"><a href="#">{{ site.URL }}</a></h3>
+                                <p class="card-text">{{ site.Price|currency }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons text-info">info</i>
+                                    <a href="{% url 'site_details' site.URL %}">See Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

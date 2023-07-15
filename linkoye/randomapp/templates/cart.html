@@ -1,0 +1,199 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Cart{% endblock %}
+{% block disable %}<script>
+    editor.enableReadOnlyMode( 'mytextarea' );
+    editor.isReadOnly;
+</script>{% endblock %}
+{% load cart %}
+
+{% block content %}
+<!-- <script>
+    function myFunction() {
+  var x = document.getElementById("third");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    </script> -->
+
+
+
+<h3>Cart</h3>
+<table class="table align-middle mb-0 bg-white">
+    <thead class="bg-dark text-white">
+      <tr>
+        <th>#</th>
+        <th>URL</th>
+        <th hidden>Title</th>
+        <th hidden>Deadline</th>
+        <th hidden>Keywords</th>
+        <th hidden>url</th>
+        <th hidden>Link Type</th>
+        <th hidden>Details</th>
+        <th hidden>Image URL</th>
+        <th hidden>Terms to avoid</th>
+        <th hidden>Info Source</th>
+        <th>Price</th>
+        <th>Details</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for key,data in title %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ key.1 }}</td>
+        <td hidden>{{ key.2 }}</td>
+        <td hidden>{{ key.3 }}</td>
+        <td hidden>
+            {% for data in key.4 %}
+            <span>{{ data }}</span>,
+            {% endfor %}
+        </td>
+        <td hidden>
+            {% for data in key.5 %}
+            <span>{{ data }}</span>
+            {% endfor %}
+        </td>
+        <td hidden>
+            {% for data in key.6 %}
+            <span>{{ data }}</span>,
+            {% endfor %}
+        </td>
+        <td hidden>{{ key.7 }}</td>
+        <td hidden>{{ key.8 }}</td>
+        <td hidden>{{ key.9 }}</td>
+        <td hidden>{{ key.10 }}</td>
+        <td>{{ key.11|currency }}</td>
+        <!-- <td><button class="badge badge-info">View</button></td> -->
+        <td><button data-toggle="modal" data-target="#exampleModalLong" onclick="showcartdetails(this)" class="dbutton badge badge-info border-0">View</button>
+        <form method="POST">
+            {% csrf_token %}
+            <td hidden><input type="text" name="siteid" id="" value="{{ data.id }}"></td>
+            <td><button type="submit" name="remove" value="remove" style="background: none; border:none">
+                <i style="color: red;" class="fa fa-trash" aria-hidden="true"></i>
+            </button></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </tbody>
+    {% if request.session.cart %}
+    <tfoot>
+        <tr>
+            <th colspan="4">Total</th>
+            <th>{{ sites|total_cart_price:request.session.cart|currency }}</th>
+        </tr>
+      </tfoot>
+      {% endif %}
+  </table>
+
+  {% if not request.session.cart %}
+<h2 class="text-center">Your cart is empty</h2>
+{% else %}
+<div class="mt-4 text-center">
+    <a href="/checkout" class="mb-2 btn btn-warning">Proceed To Checkout</a>
+</div>
+{% endif %}
+    
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+ aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+ <div style="max-width: 1000px;" class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLongTitle">Order Details</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>
+         </div>
+         <div class="modal-body">
+            <div class="row m-b-sm">
+                <div class="col-12">
+                    <div class="resume-request-box">
+                        <div class="form-row">
+                            <div class="form-group form-group-v2 col-sm-6">
+                                <label class="p-14"><strong>Post title</strong> <i
+                                        class="fa fa-info-circle" data-toggle="tooltip" data-html="true" data-placement="top"
+                                        data-original-title="The title may be modified if its cosidered by the publisher in order to improve naturalness and SEO content "></i>
+                                </label>
+                                <input disabled type="text" id="title" class="input-form-v2 input-sm form-control">
+                            </div>
+                            <div class="form-group form-group-v2  col-xs-12 col-sm-6">
+                                <label class="p-14"><strong>Deadline to hand in the order</strong> <span class="strong-orange">*</span></label>
+                                <input disabled type="date" id="limit_time" autocomplete="off" class="limittime input-form-v2 input-sm form-control hasDatepicker" id="datefield">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-4">
+                                <p class="p-14 label-only m-b-0">
+                                    <label class="p-14"><strong>Keywords</strong></label>
+                                    <p style="height: 200px;" disabled id="linkkeywords" class="form-control m-t-xs"></p>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p class="p-14 label-only m-b-0">
+                                    <label class="p-14"><strong>URL</strong></label>
+                                    <p style="height: 200px;" disabled id="linkurls" class="form-control m-t-xs"></p>
+                                </p>
+                            </div>
+                            <div class="col-4">
+                                <p class="p-14 label-only m-b-0">
+                                    <label class="p-14"><strong>Link Type</strong></label>
+                                    <p style="height: 200px;" disabled id="linktype" class="form-control m-t-xs"></p>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="KUL">
+                        </div>
+                        <div class="form-row m-t-xs">
+                            <div class="form-group form-group-v2  col-12">
+                                <label class="p-14"><strong>Details of the order </strong> <span class="strong-orange">*</span></label>
+                                <textarea placeholder="Tell the Publisher what you want the sponsored post to be about. It is not allowed to include contact details." name="odetails" id="mytextarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row m-t-xs">
+                            <div class="mb-2 m-auto">
+                            </div>
+                            <div class="form-group form-group-v2  col-12">
+                                <label class="p-14"><strong>Image url </strong><i class="fa fa-info-circle"></i></label>
+                            </div>
+                        </div>
+        
+                        <div class="form-row">
+                            <div class="form-group form-group-v2  col-lg-6">
+                                <label class="p-14"><strong>Avoid following terms </strong> </label>
+                                <textarea disabled id="avoidingterms" class="form-control m-t-xs"></textarea>
+                            </div>
+                            <div class="form-group form-group-v2  col-lg-6">
+                                <label class="p-14"><strong>Information source </strong> </label>
+                                <textarea disabled id="infosource" class="form-control m-t-xs"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-group-v2  col-12" style="display:none" id="calculateprice">
+                                <div class="alert alert-dashed text-center">The total cost of the sponsored post is of <span
+                                        class="finalprice">1,050€</span> (<span id="baseprice"></span> for the post + <span
+                                        id="sumprice"></span> for the vitaminized links)</div>
+                            </div>
+                        </div>
+                        <div id="resultweb"></div><br>
+        
+                    </div>
+                </div>
+            </div>
+         </div>
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+     </div>
+ </div>
+</div>
+
+{% endblock %}

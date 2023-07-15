@@ -1,0 +1,37 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Quick Purchase{% endblock %}
+{% load cart %}
+{% load search %}
+
+{% block content %}
+    <h2 class="text-center"><b>WALLET TRANSACTIONS</b></h2>
+    <table class="table">
+        <thead style="background-color: #ffc93c; color: white;">
+            <tr>
+                <th>Transaction ID</th>
+                <th>Amount</th>
+                <th>IBAN</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td><b>#{{ transaction.order_id }}</b></td>
+                    <td>{{ transaction.amount|currency }}</td>
+                    <td>{{ transaction.IBAN }}</td>
+                    <td>{{ transaction.created_at }}</td>
+                    {% if transaction.status == 'pending' %}
+                        <td><span class="badge badge-warning">{{ transaction.status }}</span></td>
+                        {% elif transaction.status == 'success' %}
+                        <td><span class="badge badge-success">{{ transaction.status }}</span></td>
+                        {% elif transaction.status == 'failed' %}
+                        <td><span class="badge badge-danger">{{ transaction.status }}</span></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

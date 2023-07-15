@@ -1,0 +1,247 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+{% block title %}Quick Purchase{% endblock %}
+{% block qp_active %}active{% endblock %}
+{% load cart %}
+{% load search %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <div class="card" style="min-height: 485px">
+            <div class="card-header card-header-text">
+                <h4 class=" text-center card-title"><b>Sites For Purchase</b></h4>
+            </div>
+            <div class="card-content table-responsive">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="radio" name="searchType" value="language" checked> Search by language&nbsp;&nbsp;
+                            </div>
+                            <div class="input-group-text">
+                                <input type="radio" name="searchType" value="country"> Search by country
+                            </div>
+                        </div>
+                        <input type="text" id="search-input" class="form-control" placeholder="Search Here">
+                    </div>
+                </div>
+                <table class="table table-hover">
+                    <thead style="background-color: #ffc93c; color: white;">
+                        <tr>
+                            <th>#</th>
+                            <th>URL</th>
+                            <th>Language</th>
+                            <th>Country</th>
+                            <th>DA</th>
+                            <th>PA</th>
+                            <th>Web Traffic</th>
+                            <th>Price</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in sites_data %}
+                            <tr class="website-row" data-language="{{ data.Language }}" data-country="{{ data.Country }}">
+                                <td>{{ forloop.counter }}</td>
+                                <td hidden>{{ data.id }}</td>
+                                <td>{{ data.URL }}</td>
+                                <td>{{ data.Language }}</td>
+                                <td>{{ data.Country }}</td>
+                                <td>{{ data.DA }}</td>
+                                <td>{{ data.PA }}</td>
+                                <td>{{ data.Organic_Traffic }}</td>
+                                <td>{{ data.Price|currency }}</td>
+                                <td><a class="btn btn-info" href="{% url 'site_details' data.URL %}">View</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var input = document.getElementById("search-input");
+    var searchType = "language";
+    var languageRadio = document.querySelector("input[value='language']");
+    var countryRadio = document.querySelector("input[value='country']");
+    languageRadio.addEventListener("change", function(event) {
+        searchType = "language";
+    });
+    countryRadio.addEventListener("change", function(event) {
+        searchType = "country";
+    });
+    input.addEventListener("keyup", function() {
+        var filter = input.value.toLowerCase();
+        var rows = document.getElementsByClassName("website-row");
+        for (var i = 0; i < rows.length; i++) {
+            var searchString = "";
+            if (searchType == "language") {
+                searchString = rows[i].getAttribute("data-language").toLowerCase();
+            } else {
+                searchString = rows[i].getAttribute("data-country").toLowerCase();
+            }
+            if (searchString.startsWith(filter)) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div style="max-width: 1000px;" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div style="height: 110px; width: 150px; display: flex;">
+                        <img style="width: 100px; height:100px" src="" alt="">&nbsp;
+                        <span><a id="url" href=""></a></span>
+                    </div>
+
+                    <div style="float: left;">
+                        <span class="badge badge-warning">Blog/Web</span>
+                    </div>
+                    <div style="float: right;">
+
+                        
+                    </div>
+                    <br>
+            <div>
+                <label><b>Description:</b></label>
+                <p id="desc"></p>
+            </div>
+
+            <table class="tab">
+                <thead>
+                    <tr>
+                        <th hidden >ID</th>
+                        <th>Country</th>
+                        <th>Language</th>
+                        <th>Link</th>
+                        <th>Not Accepted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td hidden id="sid"></td>
+                        <td id="country"></td>
+                        <td id="language"></td>
+                        <td id="link-allowed"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="box">
+                <label>CATEGORIES</label><br>
+                <span style="font-size: 9.7px;"><i class="fa-solid fa-bookmark"></i>Miscellaneous</span>
+            </div>
+            <div class="box2">
+                <label>SEO METRICS&nbsp;</label>
+                <div class="box3">
+                    <div>
+                        <p class="badge badge-pill badge-secondary">DA</p>
+                        <p class="badge badge-pill badge-secondary">PA</p>
+                        <p class="badge badge-pill badge-secondary">Traffic</p>
+                    </div>
+                    <a id="mDA"></a>
+                    <a style="margin: 14px;" id="mPA"></a>
+                    <a id="mtraffic"></a>
+                </div>
+            </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                        <input type="text" hidden name="siteid" id="sid">
+                        <a href="" class="btn btn-success" type="submit" value="Buy Post">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal Section -->
+    <!-- <div class="bg-modal">
+        <div class="modal-contents">
+
+            <div class="close">+</div>
+            <div style="height: 110px; width: 150px; display: flex;">
+                <img style="width: 100px; height:100px" src="" alt="">
+                <span><a id="url" href=""></a></span>
+            </div>
+            <div>
+                <div style="float: left;">
+                    <span class="badge badge-warning">Blog/Web</span>
+                </div>
+                <div style="float: right;">
+
+                    <button style="font-size: 15px; padding:7px;" class="badge badge-success"><i
+                            style="font-size: 15px;" class="material-icons">shopping_cart</i>Buy
+                        Post</button>
+                </div>
+            </div>
+            <br>
+            <div>
+                <label><b>Description:</b></label>
+                <p id="desc"></p>
+            </div>
+
+            <table class="tab">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Language</th>
+                        <th>Link</th>
+                        <th>Not Accepted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="country"></td>
+                        <td id="language"></td>
+                        <td id="link-allowed"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="box">
+                <label>CATEGORIES</label><br>
+                <span style="font-size: 9.7px;"><i class="fa-solid fa-bookmark"></i>Miscellaneous</span>
+                <span style="font-size: 9.7px;"><i class="fa-solid fa-bookmark"></i>Miscellaneous</span>
+            </div>
+            <div class="box2" style="float: left;  ">
+                <label>SEO METRICS&nbsp;</label>
+                <div class="box3">
+                    <div>
+                        <p class="badge badge-pill badge-secondary">DA</p>
+                        <p class="badge badge-pill badge-secondary">PA</p>
+                    </div>
+                    <a id="mDA"></a>
+                    <a style="margin: 14px;" id="mPA"></a>
+                </div>
+                <!-- <div class="box3">2</div>
+                <div class="box3">3</div>
+                <div class="box3">4</div> -->
+
+
+{% endblock %}
